@@ -1,0 +1,830 @@
+﻿Month;Incident date;Line;Place;Place;Place;Incident description NL;Incident description FR;Incident description;Minutes of delay;Number of cancelled trains
+2025-08;2025-08-25;96A;Y.RUISBROEK;Y.RUISBROEK;Y.RUISBROEK;Schade bovenleiding;Avarie caténaire;Damage catenary;1275;9
+2025-08;2025-08-13;59;SINAAI;SINAAI;SINAAI;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1020;38
+2025-08;2025-08-13;0/1;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Aanwezigheid verdacht pakket;Présence d'un colis suspect;Presence of a suspicious package;5866;169
+2025-08;2025-08-11;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1986;17
+2025-08;2025-08-07;50C;ANDERLECHT;ANDERLECHT;ANDERLECHT;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;9671;207
+2025-08;2025-08-07;15;LIER;LIER;LIER;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1882;27
+2025-08;2025-08-02;96N;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1333;8
+2025-07;2025-07-31;27;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;2025;112
+2025-07;2025-07-29;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Aanwezigheid verdacht pakket;Présence d'un colis suspect;Presence of a suspicious package;5830;85
+2025-07;2025-07-22;37;OLNE;OLNE;OLNE;Dringende werken;Travaux urgents;Urgent works;2228;0
+2025-07;2025-07-04;27;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3061;60
+2025-07;2025-07-01;12;KAPELLEN;KAPELLEN;KAPELLEN;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1349;11
+2025-06;2025-06-30;115;TUBIZE;TUBIZE;TUBIZE;Schade bovenleiding;Avarie caténaire;Damage catenary;1002;33
+2025-06;2025-06-27;0/2;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Kwaadwillige daad;Acte de malveillance;Malicious act;1143;5
+2025-06;2025-06-27;124;WATERLOO;WATERLOO;WATERLOO;Kwaadwillige daad;Acte de malveillance;Malicious act;1357;18
+2025-06;2025-06-24;-;-;-;-;Vertragingen vanuit naburige netwerken;Retards en provenance des réseaux voisins;Delays from neighbouring networks;1772;14
+2025-06;2025-06-05;25;VILVOORDE;VILVOORDE;VILVOORDE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1224;53
+2025-06;2025-06-05;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2853;24
+2025-05;2025-05-28;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1147;20
+2025-05;2025-05-28;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1611;40
+2025-05;2025-05-23;59;BELSELE;BELSELE;BELSELE;Persoonsongeval;Heurt d'une personne;Collision with a person;1015;53
+2025-05;2025-05-21;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1009;20
+2025-05;2025-05-19;59;ANTWERPEN-ZUID;ANTWERPEN-ZUID;ANTWERPEN-ZUID;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1306;68
+2025-05;2025-05-15;0/3;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Kwaadwillige daad;Acte de malveillance;Malicious act;1398;26
+2025-05;2025-05-08;50A;Y.WELLE;Y.WELLE;Y.WELLE;Persoonsongeval;Heurt d'une personne;Collision with a person;1077;15
+2025-05;2025-05-07;96;VORST-ZUID;VORST-ZUID;VORST-ZUID;Kwaadwillige daad;Acte de malveillance;Malicious act;1066;4
+2025-05;2025-05-01;50;GROOT-BIJGAARDEN;GROOT-BIJGAARDEN;GROOT-BIJGAARDEN;Schade bovenleiding;Avarie caténaire;Damage catenary;0;5
+2025-04;2025-04-30;50;GROOT-BIJGAARDEN;GROOT-BIJGAARDEN;GROOT-BIJGAARDEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1812;43
+2025-04;2025-04-30;35;DIEST;DIEST;DIEST;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1567;47
+2025-04;2025-04-30;139;OUD-HEVERLEE;OUD-HEVERLEE;OUD-HEVERLEE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1320;29
+2025-04;2025-04-25;34;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1020;49
+2025-04;2025-04-23;96N;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2114;35
+2025-04;2025-04-23;96;JURBISE;JURBISE;JURBISE;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;1014;23
+2025-04;2025-04-15;1;HALLE-RING;HALLE-RING;HALLE-RING;Schade bovenleiding;Avarie caténaire;Damage catenary;1367;2
+2025-04;2025-04-07;25;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;2794;123
+2025-04;2025-04-06;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1510;13
+2025-04;2025-04-04;27;DUFFEL;DUFFEL;DUFFEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1971;30
+2025-03;2025-03-30;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;1255;216
+2025-03;2025-03-16;50A;BRUGGE;BRUGGE;BRUGGE;Gevaarlijke stoffen in de nabijheid van het spoor;Matières dangereuses à proximité des voies;Dangerous goods near the tracks;1196;38
+2025-03;2025-03-16;0/4;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Aanwezigheid verdacht pakket;Présence d'un colis suspect;Presence of a suspicious package;1858;16
+2025-03;2025-03-14;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;2328;53
+2025-03;2025-03-13;94;HALLE;HALLE;HALLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1261;19
+2025-03;2025-03-12;25;BUDA;BUDA;BUDA;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1641;36
+2025-03;2025-03-11;50A;OOSTENDE;OOSTENDE;OOSTENDE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1003;15
+2025-03;2025-03-08;58/1;Y.WEST DRIEHOEK LEDEBERG;Y.WEST DRIEHOEK LEDEBERG;Y.WEST DRIEHOEK LEDEBERG;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1399;98
+2025-03;2025-03-07;50C;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Schade bovenleiding;Avarie caténaire;Damage catenary;2405;85
+2025-03;2025-03-03;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;320;136
+2025-02;2025-02-21;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;2218;623
+2025-02;2025-02-21;50E;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1457;24
+2025-02;2025-02-14;161;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3397;33
+2025-02;2025-02-11;75;DE PINTE;DE PINTE;DE PINTE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1597;32
+2025-02;2025-02-11;161;RHISNES;RHISNES;RHISNES;Dringende werken;Travaux urgents;Urgent works;1496;172
+2025-02;2025-02-06;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3872;71
+2025-02;2025-02-04;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;1085;226
+2025-02;2025-02-03;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;1512;263
+2025-01;2025-01-28;4;NOORDERKEMPEN;NOORDERKEMPEN;NOORDERKEMPEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1016;28
+2025-01;2025-01-09;161;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2302;28
+2025-01;2025-01-08;59;LOKEREN;LOKEREN;LOKEREN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1030;23
+2025-01;2025-01-06;36;TIENEN;TIENEN;TIENEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1129;47
+2024-12;2024-12-12;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Persoonsongeval;Heurt d'une personne;Collision with a person;1309;45
+2024-12;2024-12-10;26/4;ETTERBEEK;ETTERBEEK;ETTERBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1046;26
+2024-12;2024-12-02;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1467;33
+2024-11;2024-11-29;96;RUISBROEK;RUISBROEK;RUISBROEK;Persoonsongeval;Heurt d'une personne;Collision with a person;6815;113
+2024-11;2024-11-29;89;OUDENAARDE;OUDENAARDE;OUDENAARDE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1127;26
+2024-11;2024-11-25;139L/2;OTTIGNIES-RELAIS;OTTIGNIES-RELAIS;OTTIGNIES-RELAIS;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1023;46
+2024-11;2024-11-20;12;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1011;25
+2024-11;2024-11-13;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;1627;30
+2024-11;2024-11-08;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3735;55
+2024-11;2024-11-08;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;3701;85
+2024-11;2024-11-07;50A;Y.WELLE;Y.WELLE;Y.WELLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2301;40
+2024-11;2024-11-06;162;POIX-SAINT-HUBERT;POIX-SAINT-HUBERT;POIX-SAINT-HUBERT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1106;39
+2024-10;2024-10-15;122;ZOTTEGEM;ZOTTEGEM;ZOTTEGEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1590;46
+2024-10;2024-10-15;94;LEUZE;LEUZE;LEUZE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1059;19
+2024-10;2024-10-14;37;OLNE;OLNE;OLNE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1858;50
+2024-10;2024-10-11;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Persoonsongeval;Heurt d'une personne;Collision with a person;7801;168
+2024-10;2024-10-09;26/4;ETTERBEEK;ETTERBEEK;ETTERBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1309;30
+2024-10;2024-10-07;15;KESSEL;KESSEL;KESSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1732;48
+2024-10;2024-10-06;130;CHARLEROI-CENTRAL;CHARLEROI-CENTRAL;CHARLEROI-CENTRAL;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1033;25
+2024-10;2024-10-04;161A;Y.JUBELPARK;Y.JUBELPARK;Y.JUBELPARK;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;184;0
+2024-10;2024-10-03;25;Y.NOORD BERCHEM;Y.NOORD BERCHEM;Y.NOORD BERCHEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1196;44
+2024-09;2024-09-30;161A;Y.JUBELPARK;Y.JUBELPARK;Y.JUBELPARK;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1023;11
+2024-09;2024-09-24;36;NEERWINDEN;NEERWINDEN;NEERWINDEN;Persoonsongeval;Heurt d'une personne;Collision with a person;1461;69
+2024-09;2024-09-17;161;ETTERBEEK;ETTERBEEK;ETTERBEEK;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1937;48
+2024-09;2024-09-15;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1048;18
+2024-09;2024-09-13;130;CHATELET;CHATELET;CHATELET;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1048;27
+2024-09;2024-09-11;162;GRUPONT;GRUPONT;GRUPONT;Dringende werken;Travaux urgents;Urgent works;1535;5
+2024-09;2024-09-06;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Kabeldiefstal;Vol de câbles;Cable theft;1690;42
+2024-09;2024-09-06;97;QUIEVRAIN;QUIEVRAIN;QUIEVRAIN;Gevaarlijke stoffen in de nabijheid van het spoor;Matières dangereuses à proximité des voies;Dangerous goods near the tracks;2973;69
+2024-09;2024-09-03;50A;AALTER;AALTER;AALTER;Schade bovenleiding;Avarie caténaire;Damage catenary;6689;207
+2024-09;2024-09-02;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Persoonsongeval;Heurt d'une personne;Collision with a person;1745;21
+2024-09;2024-09-01;36;WAREMME;WAREMME;WAREMME;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;41;1
+2024-08;2024-08-31;36;WAREMME;WAREMME;WAREMME;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1968;84
+2024-08;2024-08-27;94;HAVINNES;HAVINNES;HAVINNES;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1331;55
+2024-08;2024-08-20;50E;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1715;27
+2024-08;2024-08-13;50A;BELLEM;BELLEM;BELLEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1102;18
+2024-08;2024-08-12;116;MANAGE;MANAGE;MANAGE;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1147;9
+2024-08;2024-08-08;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1323;18
+2024-08;2024-08-05;0/4;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1624;19
+2024-07;2024-07-28;25;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;Persoonsongeval;Heurt d'une personne;Collision with a person;1043;37
+2024-07;2024-07-26;-;-;-;-;Kwaadwillige daad;Acte de malveillance;Malicious act;1119;10
+2024-07;2024-07-24;-;-;-;-;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;9990;113
+2024-07;2024-07-24;1;HALLE-RING;HALLE-RING;HALLE-RING;Schade bovenleiding;Avarie caténaire;Damage catenary;1084;1
+2024-07;2024-07-23;0/3;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2250;37
+2024-07;2024-07-09;25;MECHELEN-DIJKSTRAAT;MECHELEN-DIJKSTRAAT;MECHELEN-DIJKSTRAAT;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2106;71
+2024-07;2024-07-05;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Persoonsongeval;Heurt d'une personne;Collision with a person;1463;23
+2024-07;2024-07-04;36;HERENT;HERENT;HERENT;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;4244;118
+2024-07;2024-07-02;59/1;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1182;13
+2024-07;2024-07-02;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1107;4
+2024-07;2024-07-01;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2055;38
+2024-07;2024-07-01;50;MELLE;MELLE;MELLE;Persoonsongeval;Heurt d'une personne;Collision with a person;1981;93
+2024-07;2024-07-01;15;LIER;LIER;LIER;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1150;34
+2024-06;2024-06-26;124;BRAINE-ALLIANCE-GRIL C;BRAINE-ALLIANCE-GRIL C;BRAINE-ALLIANCE-GRIL C;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1049;18
+2024-06;2024-06-24;124;LILLOIS;LILLOIS;LILLOIS;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1146;26
+2024-06;2024-06-13;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;7039;87
+2024-06;2024-06-11;59;BELSELE;BELSELE;BELSELE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2140;54
+2024-05;2024-05-29;37;NESSONVAUX;NESSONVAUX;NESSONVAUX;Persoonsongeval;Heurt d'une personne;Collision with a person;1457;57
+2024-05;2024-05-27;36N;KORTENBERG;KORTENBERG;KORTENBERG;Persoonsongeval;Heurt d'une personne;Collision with a person;4645;198
+2024-05;2024-05-24;161/2;BRUSSEL-NOORD-ROOSTER F;BRUXELLES-NORD-ROOSTER F;BRUSSELS-NORTH-ROOSTER F;Schade bovenleiding;Avarie caténaire;Damage catenary;2591;170
+2024-05;2024-05-24;53;MECHELEN;MECHELEN;MECHELEN;Fout tijdens een rangering;Erreur lors d'une manœuvre;Error during a maneuver;1691;62
+2024-05;2024-05-23;25;MORTSEL-DEURNESTEENWEG;MORTSEL-DEURNESTEENWEG;MORTSEL-DEURNESTEENWEG;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1392;19
+2024-05;2024-05-23;0/3;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1010;8
+2024-05;2024-05-21;53;BOORTMEERBEEK;BOORTMEERBEEK;BOORTMEERBEEK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1440;34
+2024-05;2024-05-20;25;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Persoonsongeval;Heurt d'une personne;Collision with a person;1642;44
+2024-05;2024-05-16;26/4;ETTERBEEK;ETTERBEEK;ETTERBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1380;24
+2024-05;2024-05-14;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2173;39
+2024-05;2024-05-10;161;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1387;37
+2024-04;2024-04-19;25N;Y.ALBERTBRUG;Y.ALBERTBRUG;Y.ALBERTBRUG;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1102;25
+2024-04;2024-04-17;58;GENTBRUGGE;GENTBRUGGE;GENTBRUGGE;Persoonsongeval;Heurt d'une personne;Collision with a person;1082;44
+2024-04;2024-04-15;89;BURST;BURST;BURST;Kwaadwillige daad;Acte de malveillance;Malicious act;1381;25
+2024-04;2024-04-10;26;EVERE;EVERE;EVERE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1341;35
+2024-04;2024-04-02;94;SAINTES;SAINTES;SAINTES;Persoonsongeval;Heurt d'une personne;Collision with a person;1277;60
+2024-03;2024-03-28;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Schade bovenleiding;Avarie caténaire;Damage catenary;2397;59
+2024-03;2024-03-27;75;DEINZE;DEINZE;DEINZE;Persoonsongeval;Heurt d'une personne;Collision with a person;1941;56
+2024-03;2024-03-25;73;TIELT;TIELT;TIELT;Schade bovenleiding;Avarie caténaire;Damage catenary;1120;30
+2024-03;2024-03-22;50C;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1044;13
+2024-03;2024-03-20;59;SINAAI;SINAAI;SINAAI;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1249;49
+2024-03;2024-03-18;36N;NOSSEGEM;NOSSEGEM;NOSSEGEM;Bommelding;Alerte à la bombe;Bomb alert;2815;52
+2024-03;2024-03-13;50;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1884;23
+2024-03;2024-03-12;59;BELSELE;BELSELE;BELSELE;Ontsporing van een reizigerstrein;Déraillement d'un train de voyageurs;Derailment of a passenger train;1309;206
+2024-03;2024-03-09;124A;CHARLEROI-CENTRAL;CHARLEROI-CENTRAL;CHARLEROI-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1089;80
+2024-03;2024-03-07;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Lichaam in het spoor;Corps dans les voies;Body in the tracks;2352;90
+2024-03;2024-03-07;161;BAKENBOS;BAKENBOS;BAKENBOS;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1857;124
+2024-02;2024-02-28;96;VORST-ZUID;VORST-ZUID;VORST-ZUID;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1241;24
+2024-02;2024-02-23;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1270;22
+2024-02;2024-02-20;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3853;68
+2024-02;2024-02-16;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2411;21
+2024-02;2024-02-12;25;MECHELEN;MECHELEN;MECHELEN;Kwaadwillige daad;Acte de malveillance;Malicious act;1058;12
+2024-02;2024-02-10;0/1;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1026;6
+2024-02;2024-02-09;25;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;1617;84
+2024-02;2024-02-01;36;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;2357;80
+2024-01;2024-01-29;86;OUDENAARDE;OUDENAARDE;OUDENAARDE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1364;19
+2024-01;2024-01-28;25;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;Schade bovenleiding;Avarie caténaire;Damage catenary;2054;110
+2024-01;2024-01-27;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1082;10
+2024-01;2024-01-26;124;NIVELLES;NIVELLES;NIVELLES;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2541;57
+2024-01;2024-01-26;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1913;24
+2024-01;2024-01-26;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1110;17
+2024-01;2024-01-22;0/5;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;4089;60
+2024-01;2024-01-19;89;OUDENAARDE;OUDENAARDE;OUDENAARDE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1167;27
+2024-01;2024-01-19;25N;Y.MACHELEN-NOORD;Y.MACHELEN-NOORD;Y.MACHELEN-NOORD;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1009;17
+2024-01;2024-01-19;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;1109;40
+2024-01;2024-01-19;35;WEZEMAAL;WEZEMAAL;WEZEMAAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1083;50
+2024-01;2024-01-19;53;MUIZEN-ROOSTER T;MUIZEN-ROOSTER T;MUIZEN-ROOSTER T;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1297;21
+2024-01;2024-01-18;-;-;-;-;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1977;267
+2024-01;2024-01-18;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;4018;186
+2024-01;2024-01-17;66;KORTRIJK;KORTRIJK;KORTRIJK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1039;22
+2024-01;2024-01-17;25;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1191;6
+2024-01;2024-01-17;25;VILVOORDE;VILVOORDE;VILVOORDE;Kwaadwillige daad;Acte de malveillance;Malicious act;1422;24
+2024-01;2024-01-17;125;HUY;HUY;HUY;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1587;35
+2024-01;2024-01-10;27;Y.SINT-KATELIJNE-WAVER;Y.SINT-KATELIJNE-WAVER;Y.SINT-KATELIJNE-WAVER;Schade bovenleiding;Avarie caténaire;Damage catenary;1254;93
+2024-01;2024-01-08;97;JEMAPPES;JEMAPPES;JEMAPPES;Persoonsongeval;Heurt d'une personne;Collision with a person;1528;53
+2024-01;2024-01-08;50A;BEERNEM;BEERNEM;BEERNEM;Lichaam in het spoor;Corps dans les voies;Body in the tracks;3276;95
+2024-01;2024-01-03;162;MARBEHAN;MARBEHAN;MARBEHAN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2418;93
+2024-01;2024-01-02;96;BUIZINGEN;BUIZINGEN;BUIZINGEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2124;65
+2023-12;2023-12-28;161;RIXENSART;RIXENSART;RIXENSART;Lichaam in het spoor;Corps dans les voies;Body in the tracks;1950;137
+2023-12;2023-12-21;12;EKEREN;EKEREN;EKEREN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1055;30
+2023-12;2023-12-18;0/4;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Persoonsongeval;Heurt d'une personne;Collision with a person;2076;61
+2023-12;2023-12-17;27;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;3971;207
+2023-12;2023-12-13;96N;Y.NOORD HALLE;Y.NOORD HALLE;Y.NOORD HALLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2137;42
+2023-12;2023-12-11;59;MELSELE;MELSELE;MELSELE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1414;25
+2023-12;2023-12-08;27;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;Persoonsongeval;Heurt d'une personne;Collision with a person;3434;75
+2023-12;2023-12-05;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;1137;70
+2023-12;2023-12-04;96;BRAINE-LE-COMTE;BRAINE-LE-COMTE;BRAINE-LE-COMTE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1406;40
+2023-12;2023-12-01;161;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1293;51
+2023-11;2023-11-30;50;MELLE;MELLE;MELLE;Persoonsongeval;Heurt d'une personne;Collision with a person;2200;87
+2023-11;2023-11-23;53;LEUVEN;LEUVEN;LEUVEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1302;10
+2023-11;2023-11-20;35;WEZEMAAL;WEZEMAAL;WEZEMAAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1573;54
+2023-11;2023-11-17;50A;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1416;36
+2023-11;2023-11-14;89;OUDENAARDE;OUDENAARDE;OUDENAARDE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1204;30
+2023-11;2023-11-13;27;HOVE;HOVE;HOVE;Schade bovenleiding;Avarie caténaire;Damage catenary;1069;66
+2023-11;2023-11-10;162;ARLON;ARLON;ARLON;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1098;13
+2023-11;2023-11-07;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;1992;188
+2023-11;2023-11-06;75;KORTRIJK;KORTRIJK;KORTRIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;2945;91
+2023-11;2023-11-03;112;MORLANWELZ;MORLANWELZ;MORLANWELZ;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1304;23
+2023-11;2023-11-03;0/3;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1941;13
+2023-11;2023-11-02;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;44735;1383
+2023-10;2023-10-31;0/2;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;2177;59
+2023-10;2023-10-27;37A;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1786;28
+2023-10;2023-10-26;50A;BRUGGE;BRUGGE;BRUGGE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2880;80
+2023-10;2023-10-25;15;Y.NAZARETH;Y.NAZARETH;Y.NAZARETH;Kabeldiefstal;Vol de câbles;Cable theft;2001;32
+2023-10;2023-10-24;25;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1695;45
+2023-10;2023-10-19;50;WETTEREN;WETTEREN;WETTEREN;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1043;19
+2023-10;2023-10-13;59/1;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Bommelding;Alerte à la bombe;Bomb alert;2833;226
+2023-10;2023-10-12;25;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;5902;134
+2023-10;2023-10-03;161;Y.JOSAPHAT;Y.JOSAPHAT;Y.JOSAPHAT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1255;22
+2023-10;2023-10-02;36;TIENEN;TIENEN;TIENEN;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;2256;83
+2023-10;2023-10-01;36N;NOSSEGEM;NOSSEGEM;NOSSEGEM;Persoonsongeval;Heurt d'une personne;Collision with a person;159;3
+2023-09;2023-09-30;36N;NOSSEGEM;NOSSEGEM;NOSSEGEM;Persoonsongeval;Heurt d'une personne;Collision with a person;922;28
+2023-09;2023-09-29;97;JEMAPPES;JEMAPPES;JEMAPPES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1237;16
+2023-09;2023-09-27;0/3;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1229;4
+2023-09;2023-09-25;35;SCHULEN;SCHULEN;SCHULEN;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1097;28
+2023-09;2023-09-24;15;BOECHOUT;BOECHOUT;BOECHOUT;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1440;25
+2023-09;2023-09-22;0/5;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1072;11
+2023-09;2023-09-21;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Persoonsongeval;Heurt d'une personne;Collision with a person;1820;19
+2023-09;2023-09-18;161;HOEILAART;HOEILAART;HOEILAART;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1416;26
+2023-09;2023-09-14;89;ANZEGEM;ANZEGEM;ANZEGEM;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1090;25
+2023-09;2023-09-11;96;LEMBEEK;LEMBEEK;LEMBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1077;22
+2023-09;2023-09-09;36;LEUVEN;LEUVEN;LEUVEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2370;21
+2023-09;2023-09-08;50;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1319;13
+2023-09;2023-09-06;27;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;1201;30
+2023-09;2023-09-06;50A;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1465;21
+2023-09;2023-09-01;161;WATERMAAL;WATERMAAL;WATERMAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1631;40
+2023-08;2023-08-30;96;JURBISE;JURBISE;JURBISE;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1244;30
+2023-08;2023-08-28;36;TIENEN;TIENEN;TIENEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1755;33
+2023-08;2023-08-24;35;DIEST;DIEST;DIEST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2410;98
+2023-08;2023-08-21;124;LILLOIS;LILLOIS;LILLOIS;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1033;34
+2023-08;2023-08-17;21A;KIEWIT;KIEWIT;KIEWIT;Reizigersstroom of toevloed reizigers;Affluence de voyageurs;High passenger flow;1282;4
+2023-08;2023-08-15;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1043;16
+2023-08;2023-08-15;36;EZEMAAL;EZEMAAL;EZEMAAL;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1229;67
+2023-08;2023-08-13;50A;AALTER;AALTER;AALTER;Persoonsongeval;Heurt d'une personne;Collision with a person;1913;55
+2023-08;2023-08-10;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1912;5
+2023-08;2023-08-01;27;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1692;22
+2023-07;2023-07-12;96;VORST-ZUID;VORST-ZUID;VORST-ZUID;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3016;50
+2023-07;2023-07-12;59/1;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1429;14
+2023-07;2023-07-11;25;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2576;11
+2023-07;2023-07-10;59;BELSELE;BELSELE;BELSELE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1021;22
+2023-07;2023-07-08;35;LANGDORP;LANGDORP;LANGDORP;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1071;30
+2023-07;2023-07-08;36N;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1016;9
+2023-07;2023-07-07;89;BURST;BURST;BURST;Schade bovenleiding;Avarie caténaire;Damage catenary;1170;44
+2023-07;2023-07-03;50A;Y.WELLE;Y.WELLE;Y.WELLE;Schade bovenleiding;Avarie caténaire;Damage catenary;3248;74
+2023-06;2023-06-28;27;DUFFEL;DUFFEL;DUFFEL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1143;60
+2023-06;2023-06-24;36N;VELTEM;VELTEM;VELTEM;Persoonsongeval;Heurt d'une personne;Collision with a person;6528;171
+2023-06;2023-06-24;53;BOORTMEERBEEK;BOORTMEERBEEK;BOORTMEERBEEK;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1516;11
+2023-06;2023-06-24;124;LILLOIS;LILLOIS;LILLOIS;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1365;24
+2023-06;2023-06-23;34;LIEGE-SAINT-LAMBERT;LIEGE-SAINT-LAMBERT;LIEGE-SAINT-LAMBERT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1065;33
+2023-06;2023-06-22;161;PROFONDSART;PROFONDSART;PROFONDSART;Kabeldiefstal;Vol de câbles;Cable theft;1523;88
+2023-06;2023-06-21;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1068;17
+2023-06;2023-06-16;-;-;-;-;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1354;8
+2023-06;2023-06-14;53;Y.HEIKE;Y.HEIKE;Y.HEIKE;Schade bovenleiding;Avarie caténaire;Damage catenary;1497;81
+2023-06;2023-06-13;50;JETTE;JETTE;JETTE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1217;23
+2023-06;2023-06-10;50C;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Reizigersstroom of toevloed reizigers;Affluence de voyageurs;High passenger flow;1390;34
+2023-06;2023-06-09;36;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Staking of sociale actie;Mouvement de grève;Strike;2780;77
+2023-06;2023-06-08;35;DIEST;DIEST;DIEST;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1251;36
+2023-06;2023-06-05;89;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Schade bovenleiding;Avarie caténaire;Damage catenary;2006;98
+2023-06;2023-06-05;59;BELSELE;BELSELE;BELSELE;Persoonsongeval;Heurt d'une personne;Collision with a person;1764;67
+2023-06;2023-06-01;97;QUAREGNON;QUAREGNON;QUAREGNON;Persoonsongeval;Heurt d'une personne;Collision with a person;1278;54
+2023-05;2023-05-31;96;RUISBROEK;RUISBROEK;RUISBROEK;Persoonsongeval;Heurt d'une personne;Collision with a person;3500;92
+2023-05;2023-05-25;26;EVERE;EVERE;EVERE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1021;25
+2023-05;2023-05-18;66;ZEDELGEM;ZEDELGEM;ZEDELGEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1299;30
+2023-05;2023-05-17;97;QUAREGNON;QUAREGNON;QUAREGNON;Kabeldiefstal;Vol de câbles;Cable theft;2006;110
+2023-05;2023-05-17;15;Y.NAZARETH;Y.NAZARETH;Y.NAZARETH;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;2617;96
+2023-05;2023-05-16;21/1;LANDEN;LANDEN;LANDEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1498;69
+2023-05;2023-05-16;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;6622;124
+2023-05;2023-05-15;66;KORTRIJK;KORTRIJK;KORTRIJK;Schade bovenleiding;Avarie caténaire;Damage catenary;4759;217
+2023-05;2023-05-15;89;ZOTTEGEM;ZOTTEGEM;ZOTTEGEM;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1592;38
+2023-05;2023-05-12;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1367;26
+2023-05;2023-05-12;1;ESPLECHIN-FRONTIERE;ESPLECHIN-FRONTIERE;ESPLECHIN-FRONTIERE;Schade bovenleiding;Avarie caténaire;Damage catenary;2870;7
+2023-05;2023-05-08;161;PROFONDSART;PROFONDSART;PROFONDSART;Persoonsongeval;Heurt d'une personne;Collision with a person;1813;108
+2023-05;2023-05-06;36N;ZAVENTEM;ZAVENTEM;ZAVENTEM;Persoonsongeval;Heurt d'une personne;Collision with a person;4921;160
+2023-05;2023-05-04;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1362;21
+2023-05;2023-05-03;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1368;10
+2023-04;2023-04-29;10/1;Y.MELSELE;Y.MELSELE;Y.MELSELE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1254;12
+2023-04;2023-04-27;50A;Y.WELLE;Y.WELLE;Y.WELLE;Persoonsongeval;Heurt d'une personne;Collision with a person;1031;17
+2023-04;2023-04-26;36N;BRUSSEL-NOORD-ROOSTER F;BRUXELLES-NORD-ROOSTER F;BRUSSELS-NORTH-ROOSTER F;Schade bovenleiding;Avarie caténaire;Damage catenary;2842;100
+2023-04;2023-04-21;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;7940;114
+2023-04;2023-04-21;161;WATERMAAL;WATERMAAL;WATERMAAL;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1330;47
+2023-04;2023-04-19;59;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1127;19
+2023-04;2023-04-19;0/4;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3890;44
+2023-04;2023-04-18;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1939;20
+2023-04;2023-04-14;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Persoonsongeval;Heurt d'une personne;Collision with a person;2326;13
+2023-04;2023-04-11;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;9811;236
+2023-04;2023-04-06;94;SAINTES;SAINTES;SAINTES;Persoonsongeval;Heurt d'une personne;Collision with a person;1191;42
+2023-04;2023-04-06;0/1;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1028;3
+2023-04;2023-04-03;58;GENT-DAMPOORT;GENT-DAMPOORT;GENT-DAMPOORT;Persoonsongeval;Heurt d'une personne;Collision with a person;1423;45
+2023-03;2023-03-31;25;VILVOORDE;VILVOORDE;VILVOORDE;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1466;49
+2023-03;2023-03-30;25;HOVE;HOVE;HOVE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1013;14
+2023-03;2023-03-30;50;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;4391;79
+2023-03;2023-03-29;94;SAINTES;SAINTES;SAINTES;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1198;28
+2023-03;2023-03-28;124;VORST-OOST;VORST-OOST;VORST-OOST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1170;30
+2023-03;2023-03-27;1;Y.PATARD;Y.PATARD;Y.PATARD;Schade bovenleiding;Avarie caténaire;Damage catenary;2743;11
+2023-03;2023-03-13;27;VILVOORDE;VILVOORDE;VILVOORDE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1430;11
+2023-03;2023-03-07;35;TESTELT;TESTELT;TESTELT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3017;96
+2023-03;2023-03-07;124;DE HOEK;DE HOEK;DE HOEK;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1216;33
+2023-03;2023-03-07;35;SCHULEN;SCHULEN;SCHULEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2512;80
+2023-03;2023-03-06;96;RUISBROEK;RUISBROEK;RUISBROEK;Persoonsongeval;Heurt d'une personne;Collision with a person;3381;70
+2023-02;2023-02-28;96;LEMBEEK;LEMBEEK;LEMBEEK;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;2184;42
+2023-02;2023-02-27;0/3;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1008;13
+2023-02;2023-02-27;0/3;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2344;30
+2023-02;2023-02-26;59;MELSELE;MELSELE;MELSELE;Dringende werken;Travaux urgents;Urgent works;1976;56
+2023-02;2023-02-22;96;JURBISE;JURBISE;JURBISE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1051;27
+2023-02;2023-02-17;124;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1288;36
+2023-02;2023-02-17;94;Y.SILLY;Y.SILLY;Y.SILLY;Dringende werken;Travaux urgents;Urgent works;4991;110
+2023-02;2023-02-15;15;BOECHOUT;BOECHOUT;BOECHOUT;Persoonsongeval;Heurt d'une personne;Collision with a person;2568;62
+2023-02;2023-02-15;59;BEERVELDE;BEERVELDE;BEERVELDE;Dringende werken;Travaux urgents;Urgent works;1791;38
+2023-02;2023-02-15;53;WICHELEN;WICHELEN;WICHELEN;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1741;49
+2023-02;2023-02-14;59B;GENT-ZEEHAVEN;GENT-ZEEHAVEN;GENT-ZEEHAVEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1262;57
+2023-02;2023-02-14;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2726;50
+2023-02;2023-02-10;94;EDINGEN;EDINGEN;EDINGEN;Dringende werken;Travaux urgents;Urgent works;1419;0
+2023-02;2023-02-10;25;MORTSEL-OUDE GOD;MORTSEL-OUDE GOD;MORTSEL-OUDE GOD;Schade bovenleiding;Avarie caténaire;Damage catenary;1240;15
+2023-02;2023-02-09;27M/2;ANTWERPEN-NOORD-BUNDEL B3;ANTWERPEN-NOORD-BUNDEL B3;ANTWERPEN-NOORD-BUNDEL B3;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1471;24
+2023-02;2023-02-07;49;EUPEN;EUPEN;EUPEN;Staking of sociale actie;Mouvement de grève;Strike;5365;455
+2023-02;2023-02-06;161;NAMUR;NAMUR;NAMUR;Persoonsongeval;Heurt d'une personne;Collision with a person;1942;51
+2023-02;2023-02-06;50D;LANDEGEM;LANDEGEM;LANDEGEM;Persoonsongeval;Heurt d'une personne;Collision with a person;2029;41
+2023-02;2023-02-04;36;ZAVENTEM;ZAVENTEM;ZAVENTEM;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;7131;78
+2023-02;2023-02-03;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;2217;19
+2023-02;2023-02-02;94;LEUZE;LEUZE;LEUZE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;2247;68
+2023-02;2023-02-02;75;KORTRIJK;KORTRIJK;KORTRIJK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1598;52
+2023-01;2023-01-31;66;IZEGEM-SAS;IZEGEM-SAS;IZEGEM-SAS;Persoonsongeval;Heurt d'une personne;Collision with a person;1008;43
+2023-01;2023-01-31;161;Y.LOUVAIN-LA-NEUVE;Y.LOUVAIN-LA-NEUVE;Y.LOUVAIN-LA-NEUVE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1219;14
+2023-01;2023-01-20;124;OBAIX-BUZET;OBAIX-BUZET;OBAIX-BUZET;Kabeldiefstal;Vol de câbles;Cable theft;1148;12
+2023-01;2023-01-19;27;EPPEGEM;EPPEGEM;EPPEGEM;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1873;30
+2023-01;2023-01-18;161;NAMUR;NAMUR;NAMUR;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1108;18
+2023-01;2023-01-18;26;DIESDELLE;DIESDELLE;DIESDELLE;Persoonsongeval;Heurt d'une personne;Collision with a person;1179;60
+2023-01;2023-01-14;75;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1760;19
+2023-01;2023-01-13;50C;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1261;12
+2023-01;2023-01-12;53;HAACHT;HAACHT;HAACHT;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1101;41
+2023-01;2023-01-04;60;JETTE;JETTE;JETTE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1051;16
+2022-12;2022-12-30;73;LICHTERVELDE;LICHTERVELDE;LICHTERVELDE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1296;60
+2022-12;2022-12-30;15;BOUWEL;BOUWEL;BOUWEL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1129;27
+2022-12;2022-12-26;96N;Y.RUISBROEK;Y.RUISBROEK;Y.RUISBROEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1163;27
+2022-12;2022-12-22;124;NIVELLES;NIVELLES;NIVELLES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1577;47
+2022-12;2022-12-21;50A;Y.WELLE;Y.WELLE;Y.WELLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1164;10
+2022-12;2022-12-21;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1361;9
+2022-12;2022-12-20;161;CHASTRE;CHASTRE;CHASTRE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1056;18
+2022-12;2022-12-20;162;LIBRAMONT;LIBRAMONT;LIBRAMONT;Fout tijdens een rangering;Erreur lors d'une manœuvre;Error during a maneuver;1377;44
+2022-12;2022-12-20;35;WEZEMAAL;WEZEMAAL;WEZEMAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1126;14
+2022-12;2022-12-20;96;MONS;MONS;MONS;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;1185;19
+2022-12;2022-12-19;15;BOECHOUT;BOECHOUT;BOECHOUT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1558;12
+2022-12;2022-12-17;96N;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1417;1
+2022-12;2022-12-16;50A;LANDEGEM;LANDEGEM;LANDEGEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1475;28
+2022-12;2022-12-15;50A;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1291;2
+2022-12;2022-12-14;97;QUAREGNON;QUAREGNON;QUAREGNON;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1186;11
+2022-12;2022-12-14;96;ERBISOEUL;ERBISOEUL;ERBISOEUL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1021;18
+2022-12;2022-12-14;96L/2;MONS-AVIATION;MONS-AVIATION;MONS-AVIATION;Schade bovenleiding;Avarie caténaire;Damage catenary;2230;198
+2022-12;2022-12-13;94;TOURNAI;TOURNAI;TOURNAI;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1313;28
+2022-12;2022-12-13;34;LIEGE-CARRE;LIEGE-CARRE;LIEGE-CARRE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3246;83
+2022-12;2022-12-13;96;HALLE;HALLE;HALLE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1269;12
+2022-12;2022-12-13;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;1234;90
+2022-12;2022-12-12;96;TUBIZE;TUBIZE;TUBIZE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;2112;44
+2022-12;2022-12-12;-;-;-;-;Personeelsprobleem;Problème de personnel;Staffing issue;1912;55
+2022-12;2022-12-09;162;CINEY;CINEY;CINEY;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1065;15
+2022-12;2022-12-07;124;WATERLOO;WATERLOO;WATERLOO;Schade bovenleiding;Avarie caténaire;Damage catenary;3990;111
+2022-12;2022-12-05;124;WATERLOO;WATERLOO;WATERLOO;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1780;83
+2022-12;2022-12-02;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;1429;116
+2022-12;2022-12-02;25;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Schade bovenleiding;Avarie caténaire;Damage catenary;2352;44
+2022-12;2022-12-02;96;HALLE;HALLE;HALLE;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1307;10
+2022-12;2022-12-02;26;BORDET;BORDET;BORDET;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1248;30
+2022-12;2022-12-02;96B;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1152;13
+2022-11;2022-11-29;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1375;17
+2022-11;2022-11-29;50A;BEERNEM;BEERNEM;BEERNEM;Persoonsongeval;Heurt d'une personne;Collision with a person;2859;70
+2022-11;2022-11-27;12;KAPELLEN;KAPELLEN;KAPELLEN;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1141;29
+2022-11;2022-11-25;25;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Persoonsongeval;Heurt d'une personne;Collision with a person;1084;31
+2022-11;2022-11-15;59;BEERVELDE;BEERVELDE;BEERVELDE;Persoonsongeval;Heurt d'une personne;Collision with a person;1258;42
+2022-11;2022-11-15;36N;HERENT;HERENT;HERENT;Persoonsongeval;Heurt d'une personne;Collision with a person;1435;28
+2022-11;2022-11-08;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Bommelding;Alerte à la bombe;Bomb alert;1899;54
+2022-11;2022-11-08;0/4;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;8459;80
+2022-11;2022-11-07;78;BLATON;BLATON;BLATON;Kabeldiefstal;Vol de câbles;Cable theft;1369;72
+2022-11;2022-11-07;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1070;41
+2022-11;2022-11-01;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;17;0
+2022-10;2022-10-31;36;Y.VOROUX;Y.VOROUX;Y.VOROUX;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;1311;33
+2022-10;2022-10-31;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1275;18
+2022-10;2022-10-26;124;CHARLEROI-SUD;CHARLEROI-SUD;CHARLEROI-SUD;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1429;32
+2022-10;2022-10-25;-;-;-;-;Persoonsongeval;Heurt d'une personne;Collision with a person;5261;129
+2022-10;2022-10-24;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1488;15
+2022-10;2022-10-20;124;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;Fout tijdens een rangering;Erreur lors d'une manœuvre;Error during a maneuver;1503;41
+2022-10;2022-10-19;124A;ROUX;ROUX;ROUX;Kabeldiefstal;Vol de câbles;Cable theft;1585;41
+2022-10;2022-10-17;161;PROFONDSART;PROFONDSART;PROFONDSART;Personeelsprobleem;Problème de personnel;Staffing issue;1671;38
+2022-10;2022-10-17;0/2;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1658;18
+2022-10;2022-10-17;161;ERNAGE;ERNAGE;ERNAGE;Persoonsongeval;Heurt d'une personne;Collision with a person;1500;67
+2022-10;2022-10-16;27;VILVOORDE;VILVOORDE;VILVOORDE;Kabeldiefstal;Vol de câbles;Cable theft;1626;64
+2022-10;2022-10-15;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Kwaadwillige daad;Acte de malveillance;Malicious act;3040;30
+2022-10;2022-10-13;15;NIJLEN;NIJLEN;NIJLEN;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1312;6
+2022-10;2022-10-11;59;SINT-NIKLAAS-OOST;SINT-NIKLAAS-OOST;SINT-NIKLAAS-OOST;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1469;31
+2022-10;2022-10-10;36N;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2025;15
+2022-10;2022-10-06;50A;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1730;8
+2022-10;2022-10-04;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;1008;120
+2022-10;2022-10-03;58;GENT-DAMPOORT;GENT-DAMPOORT;GENT-DAMPOORT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1521;35
+2022-10;2022-10-03;2;HOEGAARDEN;HOEGAARDEN;HOEGAARDEN;Persoonsongeval;Heurt d'une personne;Collision with a person;4526;70
+2022-09;2022-09-30;96;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1079;6
+2022-09;2022-09-28;96;MONS;MONS;MONS;Fout tijdens een rangering;Erreur lors d'une manœuvre;Error during a maneuver;1140;12
+2022-09;2022-09-28;50;MELLE;MELLE;MELLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1069;18
+2022-09;2022-09-22;94;ATH;ATH;ATH;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1047;22
+2022-09;2022-09-21;96;HALLE;HALLE;HALLE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;3602;68
+2022-09;2022-09-19;96;TUBIZE;TUBIZE;TUBIZE;Persoonsongeval;Heurt d'une personne;Collision with a person;1070;23
+2022-09;2022-09-16;161;SAINT-DENIS-BOVESSE;SAINT-DENIS-BOVESSE;SAINT-DENIS-BOVESSE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1219;27
+2022-09;2022-09-16;94;SAINTES;SAINTES;SAINTES;Aanrijding van een dier;Heurt d'animal;Collision with an animal;1783;56
+2022-09;2022-09-14;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1071;17
+2022-09;2022-09-10;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1739;34
+2022-09;2022-09-10;53;SCHELLEBELLE;SCHELLEBELLE;SCHELLEBELLE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1239;8
+2022-09;2022-09-09;94;EDINGEN;EDINGEN;EDINGEN;Fout tijdens een rangering;Erreur lors d'une manœuvre;Error during a maneuver;1258;44
+2022-09;2022-09-08;96;RUISBROEK;RUISBROEK;RUISBROEK;Schade bovenleiding;Avarie caténaire;Damage catenary;1554;48
+2022-09;2022-09-07;50A;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Kwaadwillige daad;Acte de malveillance;Malicious act;1894;17
+2022-09;2022-09-07;124;CHARLEROI-SUD;CHARLEROI-SUD;CHARLEROI-SUD;Persoonsongeval;Heurt d'une personne;Collision with a person;5212;175
+2022-09;2022-09-07;50;JETTE;JETTE;JETTE;Kabeldiefstal;Vol de câbles;Cable theft;2231;40
+2022-09;2022-09-05;40;BRESSOUX;BRESSOUX;BRESSOUX;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;321;0
+2022-08;2022-08-11;89;EDE;EDE;EDE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1258;35
+2022-08;2022-08-04;50A;LANDEGEM;LANDEGEM;LANDEGEM;Aanrijding van een dier;Heurt d'animal;Collision with an animal;2325;54
+2022-08;2022-08-01;75;DEINZE-WIJKSPOREN;DEINZE-WIJKSPOREN;DEINZE-WIJKSPOREN;Persoonsongeval;Heurt d'une personne;Collision with a person;1074;33
+2022-07;2022-07-29;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2590;36
+2022-07;2022-07-29;1;Y.PATARD;Y.PATARD;Y.PATARD;Aanrijding van een dier;Heurt d'animal;Collision with an animal;4717;23
+2022-07;2022-07-27;112;FORCHIES;FORCHIES;FORCHIES;Kwaadwillige daad;Acte de malveillance;Malicious act;1613;31
+2022-07;2022-07-24;36;LANDEN;LANDEN;LANDEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1586;117
+2022-07;2022-07-18;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;6695;163
+2022-07;2022-07-15;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;9020;138
+2022-07;2022-07-15;94;EDINGEN;EDINGEN;EDINGEN;Kwaadwillige daad;Acte de malveillance;Malicious act;1417;25
+2022-07;2022-07-04;96;RUISBROEK;RUISBROEK;RUISBROEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3821;67
+2022-07;2022-07-01;59/1;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1282;24
+2022-06;2022-06-28;96;HENNUYERES;HENNUYERES;HENNUYERES;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;2113;26
+2022-06;2022-06-21;89;ZOTTEGEM;ZOTTEGEM;ZOTTEGEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1471;33
+2022-06;2022-06-21;0/3;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2675;16
+2022-06;2022-06-20;0/3;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Staking of sociale actie;Mouvement de grève;Strike;1451;1
+2022-06;2022-06-18;50A;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Reizigersstroom of toevloed reizigers;Affluence de voyageurs;High passenger flow;1140;0
+2022-06;2022-06-17;21;SINT-TRUIDEN;SINT-TRUIDEN;SINT-TRUIDEN;Persoonsongeval;Heurt d'une personne;Collision with a person;2726;31
+2022-06;2022-06-17;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2409;29
+2022-06;2022-06-17;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1074;7
+2022-06;2022-06-16;50;LIEDEKERKE;LIEDEKERKE;LIEDEKERKE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2345;43
+2022-06;2022-06-16;124A;LUTTRE;LUTTRE;LUTTRE;Kabeldiefstal;Vol de câbles;Cable theft;1280;20
+2022-06;2022-06-15;27;Y.DRABSTRAAT;Y.DRABSTRAAT;Y.DRABSTRAAT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1010;15
+2022-06;2022-06-13;96;LOT;LOT;LOT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1912;23
+2022-06;2022-06-13;36;VERTRIJK;VERTRIJK;VERTRIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;2107;65
+2022-06;2022-06-09;36N;NOSSEGEM;NOSSEGEM;NOSSEGEM;Kwaadwillige daad;Acte de malveillance;Malicious act;1106;10
+2022-06;2022-06-09;58;GENTBRUGGE;GENTBRUGGE;GENTBRUGGE;Persoonsongeval;Heurt d'une personne;Collision with a person;1063;32
+2022-06;2022-06-07;154;DINANT;DINANT;DINANT;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1194;32
+2022-06;2022-06-03;50A;LANDEGEM-ROOSTER G/H/L;LANDEGEM-ROOSTER G/H/L;LANDEGEM-ROOSTER G/H/L;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1595;35
+2022-06;2022-06-03;50C;LIEDEKERKE;LIEDEKERKE;LIEDEKERKE;Persoonsongeval;Heurt d'une personne;Collision with a person;1451;45
+2022-06;2022-06-03;125;JAVA;JAVA;JAVA;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1083;24
+2022-06;2022-06-02;97;QUAREGNON;QUAREGNON;QUAREGNON;Persoonsongeval;Heurt d'une personne;Collision with a person;3473;97
+2022-06;2022-06-01;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1210;32
+2022-05;2022-05-25;36N;KORTENBERG;KORTENBERG;KORTENBERG;Persoonsongeval;Heurt d'une personne;Collision with a person;4091;99
+2022-05;2022-05-23;0/3;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1640;10
+2022-05;2022-05-20;97;JEMAPPES;JEMAPPES;JEMAPPES;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1066;17
+2022-05;2022-05-18;36;Y.MOLENBEEK;Y.MOLENBEEK;Y.MOLENBEEK;Persoonsongeval;Heurt d'une personne;Collision with a person;1434;56
+2022-05;2022-05-13;124;LILLOIS;LILLOIS;LILLOIS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2254;59
+2022-05;2022-05-12;25N;MECHELEN;MECHELEN;MECHELEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2420;29
+2022-05;2022-05-12;112;LA LOUVIERE-SUD;LA LOUVIERE-SUD;LA LOUVIERE-SUD;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1039;72
+2022-05;2022-05-12;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Brand in het spoor;Incendie dans les voies;Fire in the tracks;1003;27
+2022-05;2022-05-11;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;4179;80
+2022-05;2022-05-11;50;SERSKAMP;SERSKAMP;SERSKAMP;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1453;3
+2022-05;2022-05-10;112;PIETON;PIETON;PIETON;Kwaadwillige daad;Acte de malveillance;Malicious act;1528;35
+2022-05;2022-05-03;75;DE PINTE;DE PINTE;DE PINTE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1112;12
+2022-05;2022-05-02;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3902;133
+2022-05;2022-05-02;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3641;106
+2022-04;2022-04-29;50C;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Persoonsongeval;Heurt d'une personne;Collision with a person;5474;105
+2022-04;2022-04-26;36;HAREN-ZUID;HAREN-ZUID;HAREN-ZUID;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;4038;41
+2022-04;2022-04-25;27;DUFFEL;DUFFEL;DUFFEL;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;2576;42
+2022-04;2022-04-22;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2263;21
+2022-04;2022-04-21;112;CARNIERES;CARNIERES;CARNIERES;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1313;60
+2022-04;2022-04-15;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2850;54
+2022-04;2022-04-14;35;AARSCHOT;AARSCHOT;AARSCHOT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1321;31
+2022-04;2022-04-05;36;TIENEN;TIENEN;TIENEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1707;64
+2022-03;2022-03-31;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1380;9
+2022-03;2022-03-29;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1219;15
+2022-03;2022-03-29;12;KAPELLEN;KAPELLEN;KAPELLEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1326;22
+2022-03;2022-03-29;25;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;8462;95
+2022-03;2022-03-28;35;SCHULEN;SCHULEN;SCHULEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1369;22
+2022-03;2022-03-25;112;LA LOUVIERE-SUD;LA LOUVIERE-SUD;LA LOUVIERE-SUD;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1014;21
+2022-03;2022-03-22;36;NOSSEGEM;NOSSEGEM;NOSSEGEM;Geen elektriciteitsvoorziening door de netwerkbeheerder;Défaut de fourniture d'électricité par le gestionnaire de réseau;Failure to supply electricity by the network operator;1626;37
+2022-03;2022-03-22;124;VORST-OOST;VORST-OOST;VORST-OOST;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;2136;54
+2022-03;2022-03-17;162;NAMUR;NAMUR;NAMUR;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1847;17
+2022-03;2022-03-15;27;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;3007;82
+2022-03;2022-03-11;124A;MARCHIENNE-AU-PONT;MARCHIENNE-AU-PONT;MARCHIENNE-AU-PONT;Kabeldiefstal;Vol de câbles;Cable theft;1195;27
+2022-03;2022-03-09;36;HAREN-ZUID;HAREN-ZUID;HAREN-ZUID;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1375;28
+2022-03;2022-03-09;125;ANDENNE;ANDENNE;ANDENNE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1150;48
+2022-03;2022-03-02;124;DE HOEK;DE HOEK;DE HOEK;Persoonsongeval;Heurt d'une personne;Collision with a person;2350;81
+2022-02;2022-02-28;161A;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;BRUSSEL-SCHUMAN;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;2326;36
+2022-02;2022-02-25;50A;LANDEGEM;LANDEGEM;LANDEGEM;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1167;33
+2022-02;2022-02-24;36;VERTRIJK;VERTRIJK;VERTRIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;1675;60
+2022-02;2022-02-23;35;DIEST;DIEST;DIEST;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1104;26
+2022-02;2022-02-22;162;ASSESSE;ASSESSE;ASSESSE;Persoonsongeval;Heurt d'une personne;Collision with a person;1121;28
+2022-02;2022-02-20;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;4073;57
+2022-02;2022-02-18;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;24311;1492
+2022-02;2022-02-17;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1186;0
+2022-02;2022-02-17;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1032;4
+2022-02;2022-02-17;112;Y.SAINT-VAAST;Y.SAINT-VAAST;Y.SAINT-VAAST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1095;21
+2022-02;2022-02-17;96;RUISBROEK;RUISBROEK;RUISBROEK;Persoonsongeval;Heurt d'une personne;Collision with a person;4778;130
+2022-02;2022-02-16;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1837;64
+2022-02;2022-02-12;124;UKKEL-KALEVOET;UKKEL-KALEVOET;UKKEL-KALEVOET;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1346;66
+2022-02;2022-02-10;27;VILVOORDE;VILVOORDE;VILVOORDE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1006;26
+2022-02;2022-02-10;96;TUBIZE;TUBIZE;TUBIZE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1014;42
+2022-02;2022-02-08;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;20206;600
+2022-02;2022-02-07;27;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Persoonsongeval;Heurt d'une personne;Collision with a person;1020;59
+2022-02;2022-02-03;25;WEERDE;WEERDE;WEERDE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1584;62
+2022-02;2022-02-03;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1520;13
+2022-02;2022-02-03;25;MECHELEN;MECHELEN;MECHELEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1143;38
+2022-02;2022-02-03;89;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1515;37
+2022-02;2022-02-02;53A;Y.MUIZEN;Y.MUIZEN;Y.MUIZEN;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;388;0
+2022-02;2022-02-01;50A;Y.WELLE;Y.WELLE;Y.WELLE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;815;2
+2022-01;2022-01-27;50A;AALTER;AALTER;AALTER;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1672;41
+2022-01;2022-01-26;161;LA HULPE;LA HULPE;LA HULPE;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1841;32
+2022-01;2022-01-17;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1064;13
+2022-01;2022-01-12;36;HERENT;HERENT;HERENT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2337;28
+2022-01;2022-01-10;50A;AALTER;AALTER;AALTER;Persoonsongeval;Heurt d'une personne;Collision with a person;1199;55
+2021-12;2021-12-30;50A;BELLEM;BELLEM;BELLEM;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1064;20
+2021-12;2021-12-22;53;LEUVEN;LEUVEN;LEUVEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1251;114
+2021-12;2021-12-22;112;LA LOUVIERE-SUD;LA LOUVIERE-SUD;LA LOUVIERE-SUD;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1036;6
+2021-12;2021-12-21;36;NEERWINDEN;NEERWINDEN;NEERWINDEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1021;28
+2021-12;2021-12-16;58;GENTBRUGGE;GENTBRUGGE;GENTBRUGGE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1726;31
+2021-12;2021-12-13;36;HERENT;HERENT;HERENT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1158;11
+2021-12;2021-12-13;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Probleem met een reiziger;Problème avec un voyageur;Problem with a passenger;1034;20
+2021-12;2021-12-10;15;LIER;LIER;LIER;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1512;17
+2021-11;2021-11-23;89;VICHTE;VICHTE;VICHTE;Schade bovenleiding;Avarie caténaire;Damage catenary;2205;315
+2021-11;2021-11-22;27A;LUCHTBAL-ROOSTER S;LUCHTBAL-ROOSTER S;LUCHTBAL-ROOSTER S;Persoonsongeval;Heurt d'une personne;Collision with a person;1524;41
+2021-11;2021-11-22;25;Y.BERCHEM-STADION;Y.BERCHEM-STADION;Y.BERCHEM-STADION;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1446;29
+2021-11;2021-11-16;75;DE PINTE;DE PINTE;DE PINTE;Persoonsongeval;Heurt d'une personne;Collision with a person;2292;87
+2021-11;2021-11-08;15;BOUWEL;BOUWEL;BOUWEL;Persoonsongeval;Heurt d'une personne;Collision with a person;1225;95
+2021-11;2021-11-08;42;VIELSALM;VIELSALM;VIELSALM;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1062;17
+2021-11;2021-11-08;59;SINT-NIKLAAS;SINT-NIKLAAS;SINT-NIKLAAS;Persoonsongeval;Heurt d'une personne;Collision with a person;1100;63
+2021-10;2021-10-29;96;MASNUY-SAINT-PIERRE;MASNUY-SAINT-PIERRE;MASNUY-SAINT-PIERRE;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1106;16
+2021-10;2021-10-25;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1426;6
+2021-10;2021-10-21;161;Y.JOSAPHAT;Y.JOSAPHAT;Y.JOSAPHAT;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1588;61
+2021-10;2021-10-20;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1763;21
+2021-10;2021-10-19;36C;BRUSSELS AIRPORT - ZAVENTEM;BRUSSELS AIRPORT - ZAVENTEM;BRUSSELS AIRPORT - ZAVENTEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1006;31
+2021-10;2021-10-14;25;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;Persoonsongeval;Heurt d'une personne;Collision with a person;1043;42
+2021-10;2021-10-14;26;BORDET;BORDET;BORDET;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1101;26
+2021-10;2021-10-14;94;LEUZE;LEUZE;LEUZE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1188;15
+2021-10;2021-10-13;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1865;24
+2021-10;2021-10-12;26;BOONDAAL;BOONDAAL;BOONDAAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1864;37
+2021-10;2021-10-11;37;OLNE;OLNE;OLNE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;190;0
+2021-10;2021-10-08;94;SAINTES;SAINTES;SAINTES;Schade bovenleiding;Avarie caténaire;Damage catenary;1026;51
+2021-10;2021-10-04;50A;BRUGGE;BRUGGE;BRUGGE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1062;36
+2021-10;2021-10-04;50A/3;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1015;13
+2021-09;2021-09-30;37;OLNE;OLNE;OLNE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2674;39
+2021-09;2021-09-30;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;9335;58
+2021-09;2021-09-28;154;DINANT;DINANT;DINANT;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;719;0
+2021-09;2021-09-27;124;NIVELLES;NIVELLES;NIVELLES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;2815;118
+2021-09;2021-09-24;75;DE PINTE;DE PINTE;DE PINTE;Persoonsongeval;Heurt d'une personne;Collision with a person;1064;36
+2021-09;2021-09-22;124;HOLLEKEN;HOLLEKEN;HOLLEKEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1072;25
+2021-09;2021-09-20;25;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Persoonsongeval;Heurt d'une personne;Collision with a person;3839;124
+2021-09;2021-09-13;26;SINT-JOB;SINT-JOB;SINT-JOB;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1776;35
+2021-09;2021-09-10;124;LILLOIS;LILLOIS;LILLOIS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3071;58
+2021-09;2021-09-08;27;VILVOORDE;VILVOORDE;VILVOORDE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1080;35
+2021-09;2021-09-08;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1084;16
+2021-09;2021-09-06;40;VISE;VISE;VISE;Dringende werken;Travaux urgents;Urgent works;1929;22
+2021-08;2021-08-27;15;NIJLEN;NIJLEN;NIJLEN;Persoonsongeval;Heurt d'une personne;Collision with a person;1031;44
+2021-08;2021-08-25;60;ZELLIK;ZELLIK;ZELLIK;Schade bovenleiding;Avarie caténaire;Damage catenary;1138;29
+2021-08;2021-08-20;58;GENT-DAMPOORT;GENT-DAMPOORT;GENT-DAMPOORT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1014;9
+2021-08;2021-08-03;52;RUISBROEK-ZEEKANAAL;RUISBROEK-ZEEKANAAL;RUISBROEK-ZEEKANAAL;Schade bovenleiding;Avarie caténaire;Damage catenary;1198;55
+2021-08;2021-08-01;139;GASTUCHE;GASTUCHE;GASTUCHE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1164;6
+2021-08;2021-08-01;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;5959;32
+2021-08;2021-08-01;154;DINANT;DINANT;DINANT;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2021;6
+2021-07;2021-07-23;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;3951;30
+2021-07;2021-07-22;89;HAALTERT;HAALTERT;HAALTERT;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1214;22
+2021-07;2021-07-16;25;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;3031;103
+2021-07;2021-07-14;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;4782;413
+2021-07;2021-07-13;37;OLNE;OLNE;OLNE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2360;411
+2021-07;2021-07-07;0/1;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;4276;55
+2021-07;2021-07-05;36;ANS;ANS;ANS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1594;22
+2021-06;2021-06-30;124;UKKEL-KALEVOET;UKKEL-KALEVOET;UKKEL-KALEVOET;Persoonsongeval;Heurt d'une personne;Collision with a person;3295;59
+2021-06;2021-06-29;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1668;17
+2021-06;2021-06-29;94;SAINTES;SAINTES;SAINTES;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1253;28
+2021-06;2021-06-28;96;TUBIZE;TUBIZE;TUBIZE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1656;19
+2021-06;2021-06-25;59/1;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1758;151
+2021-06;2021-06-22;26/4;Y.BOONDAAL;Y.BOONDAAL;Y.BOONDAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1303;25
+2021-06;2021-06-18;36;TIENEN;TIENEN;TIENEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1336;52
+2021-06;2021-06-13;75;DE PINTE;DE PINTE;DE PINTE;Persoonsongeval;Heurt d'une personne;Collision with a person;1294;24
+2021-06;2021-06-04;96;BRAINE-LE-COMTE;BRAINE-LE-COMTE;BRAINE-LE-COMTE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;3510;107
+2021-06;2021-06-04;94;SAINTES;SAINTES;SAINTES;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2807;36
+2021-05;2021-05-28;75;KORTRIJK;KORTRIJK;KORTRIJK;Persoonsongeval;Heurt d'une personne;Collision with a person;1712;51
+2021-05;2021-05-25;125;FLEMALLE-HAUTE;FLEMALLE-HAUTE;FLEMALLE-HAUTE;Dringende werken;Travaux urgents;Urgent works;2803;13
+2021-05;2021-05-18;124;WATERLOO;WATERLOO;WATERLOO;Persoonsongeval;Heurt d'une personne;Collision with a person;1410;68
+2021-05;2021-05-15;36N;HERENT;HERENT;HERENT;Persoonsongeval;Heurt d'une personne;Collision with a person;1300;43
+2021-05;2021-05-11;35L/3;LEUVEN-BUNDEL M;LEUVEN-BUNDEL M;LEUVEN-BUNDEL M;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;5236;168
+2021-05;2021-05-04;36;ZAVENTEM;ZAVENTEM;ZAVENTEM;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1768;23
+2021-05;2021-05-03;161;GROENENDAAL;GROENENDAAL;GROENENDAAL;Persoonsongeval;Heurt d'une personne;Collision with a person;2070;82
+2021-04;2021-04-26;27;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;2359;97
+2021-04;2021-04-03;53A;Y.MUIZEN;Y.MUIZEN;Y.MUIZEN;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;105;0
+2021-03;2021-03-25;36N;KORTENBERG;KORTENBERG;KORTENBERG;Persoonsongeval;Heurt d'une personne;Collision with a person;3928;114
+2021-03;2021-03-22;124;WATERLOO;WATERLOO;WATERLOO;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1113;20
+2021-03;2021-03-21;36N;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1731;8
+2021-03;2021-03-19;124;WATERLOO;WATERLOO;WATERLOO;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1090;44
+2021-03;2021-03-18;35;Y.OOST DRIEHOEK AARSCHOT;Y.OOST DRIEHOEK AARSCHOT;Y.OOST DRIEHOEK AARSCHOT;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1755;0
+2021-03;2021-03-15;53A;Y.MUIZEN;Y.MUIZEN;Y.MUIZEN;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;579;0
+2021-03;2021-03-15;89;OUDENAARDE;OUDENAARDE;OUDENAARDE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1159;20
+2021-03;2021-03-12;35;SCHULEN-SAS;SCHULEN-SAS;SCHULEN-SAS;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;2483;62
+2021-03;2021-03-12;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Lichaam in het spoor;Corps dans les voies;Body in the tracks;1568;27
+2021-03;2021-03-11;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Lichaam in het spoor;Corps dans les voies;Body in the tracks;1533;18
+2021-03;2021-03-09;59;Y.WEST BERCHEM;Y.WEST BERCHEM;Y.WEST BERCHEM;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1199;29
+2021-02;2021-02-25;50A;LANDEGEM;LANDEGEM;LANDEGEM;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1167;33
+2021-02;2021-02-22;162;ASSESSE;ASSESSE;ASSESSE;Persoonsongeval;Heurt d'une personne;Collision with a person;1121;28
+2021-02;2021-02-17;112;Y.SAINT-VAAST;Y.SAINT-VAAST;Y.SAINT-VAAST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1095;21
+2021-02;2021-02-17;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1186;0
+2021-02;2021-02-17;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1032;4
+2021-02;2021-02-16;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1810;64
+2021-02;2021-02-12;124;UKKEL-KALEVOET;UKKEL-KALEVOET;UKKEL-KALEVOET;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1346;66
+2021-02;2021-02-10;96;TUBIZE;TUBIZE;TUBIZE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1014;42
+2021-02;2021-02-10;27;VILVOORDE;VILVOORDE;VILVOORDE;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1006;26
+2021-02;2021-02-08;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;20206;600
+2021-02;2021-02-03;25;MECHELEN;MECHELEN;MECHELEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1143;38
+2021-02;2021-02-03;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1520;13
+2021-02;2021-02-01;50A;Y.WELLE;Y.WELLE;Y.WELLE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;815;2
+2021-01;2021-01-31;50A;Y.WELLE;Y.WELLE;Y.WELLE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;854;2
+2021-01;2021-01-30;50;Y.MELLE;Y.MELLE;Y.MELLE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1011;13
+2021-01;2021-01-28;27;Y.WEERDE;Y.WEERDE;Y.WEERDE;Ontsporing van een reizigerstrein;Déraillement d'un train de voyageurs;Derailment of a passengers train;2429;182
+2021-01;2021-01-27;15;NIJLEN;NIJLEN;NIJLEN;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1518;20
+2021-01;2021-01-26;59;LOKEREN;LOKEREN;LOKEREN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1396;36
+2021-01;2021-01-18;124;LILLOIS;LILLOIS;LILLOIS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1704;40
+2021-01;2021-01-15;50C;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1042;4
+2020-12;2020-12-18;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1967;23
+2020-12;2020-12-14;96;BUIZINGEN;BUIZINGEN;BUIZINGEN;Persoonsongeval;Heurt d'une personne;Collision with a person;5090;165
+2020-11;2020-11-27;161;BRUSSEL-LUXEMBURG;BRUSSEL-LUXEMBURG;BRUSSEL-LUXEMBURG;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1593;27
+2020-11;2020-11-21;50A;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Kwaadwillige daad;Acte de malveillance;Malicious act;1078;16
+2020-11;2020-11-07;50A;MARIA-AALTER;MARIA-AALTER;MARIA-AALTER;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1094;14
+2020-11;2020-11-06;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1610;4
+2020-11;2020-11-04;15;LIER-ROOSTER C/G;LIER-ROOSTER C/G;LIER-ROOSTER C/G;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1389;61
+2020-11;2020-11-02;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;2053;19
+2020-11;2020-11-02;59;Y.ZWIJNDRECHT-FORT;Y.ZWIJNDRECHT-FORT;Y.ZWIJNDRECHT-FORT;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;2895;12
+2020-10;2020-10-29;161;Y.LOUVAIN-LA-NEUVE;Y.LOUVAIN-LA-NEUVE;Y.LOUVAIN-LA-NEUVE;Dringende werken;Travaux urgents;Urgent works;1251;68
+2020-10;2020-10-24;35/1;Y.WEST DRIEHOEK HASSELT;Y.WEST DRIEHOEK HASSELT;Y.WEST DRIEHOEK HASSELT;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1350;23
+2020-10;2020-10-21;161;RIXENSART;RIXENSART;RIXENSART;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;2499;33
+2020-10;2020-10-17;50A;BEERNEM;BEERNEM;BEERNEM;Persoonsongeval;Heurt d'une personne;Collision with a person;1635;30
+2020-10;2020-10-05;125;FLEMALLE-HAUTE;FLEMALLE-HAUTE;FLEMALLE-HAUTE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1125;23
+2020-10;2020-10-01;25;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1252;10
+2020-09;2020-09-29;36;VERTRIJK;VERTRIJK;VERTRIJK;Dringende werken;Travaux urgents;Urgent works;2116;9
+2020-09;2020-09-29;59;LOKEREN;LOKEREN;LOKEREN;Schade bovenleiding;Avarie caténaire;Damage catenary;2003;67
+2020-09;2020-09-28;94;HALLE;HALLE;HALLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1625;33
+2020-09;2020-09-25;36;LIEGE-PLANS;LIEGE-PLANS;LIEGE-PLANS;Persoonsongeval;Heurt d'une personne;Collision with a person;1656;12
+2020-09;2020-09-22;27;VILVOORDE;VILVOORDE;VILVOORDE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1113;21
+2020-09;2020-09-20;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1212;15
+2020-09;2020-09-16;25;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;6640;154
+2020-09;2020-09-15;50;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1345;20
+2020-09;2020-09-10;25;KONTICH-LINT;KONTICH-LINT;KONTICH-LINT;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1570;36
+2020-09;2020-09-09;25N;Y.MACHELEN-ZUID;Y.MACHELEN-ZUID;Y.MACHELEN-ZUID;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1315;54
+2020-08;2020-08-31;36N;HAREN-ZUID;HAREN-ZUID;HAREN-ZUID;Kwaadwillige daad;Acte de malveillance;Malicious act;1049;8
+2020-08;2020-08-20;36N;Y.ALBERTBRUG;Y.ALBERTBRUG;Y.ALBERTBRUG;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1475;14
+2020-08;2020-08-10;124;NIVELLES;NIVELLES;NIVELLES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1514;32
+2020-08;2020-08-09;50A/4;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1481;13
+2020-08;2020-08-07;124;LINKEBEEK;LINKEBEEK;LINKEBEEK;Brand in het spoor;Incendie dans les voies;Fire in the tracks;2344;61
+2020-08;2020-08-07;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Schade bovenleiding;Avarie caténaire;Damage catenary;1221;36
+2020-08;2020-08-06;35;DIEST;DIEST;DIEST;Persoonsongeval;Heurt d'une personne;Collision with a person;1099;43
+2020-08;2020-08-03;50;DENDERLEEUW;DENDERLEEUW;DENDERLEEUW;Dringende werken;Travaux urgents;Urgent works;6549;2
+2020-07;2020-07-31;130;CHATELET;CHATELET;CHATELET;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1534;42
+2020-07;2020-07-31;50A;JABBEKE;JABBEKE;JABBEKE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1114;3
+2020-07;2020-07-13;60;ZELLIK;ZELLIK;ZELLIK;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;2149;49
+2020-07;2020-07-10;124;UKKEL-KALEVOET;UKKEL-KALEVOET;UKKEL-KALEVOET;Persoonsongeval;Heurt d'une personne;Collision with a person;1099;35
+2020-07;2020-07-08;25;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;Persoonsongeval;Heurt d'une personne;Collision with a person;2791;80
+2020-07;2020-07-01;161;BLANMONT;BLANMONT;BLANMONT;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1721;57
+2020-06;2020-06-26;29;Y.KRUISBERG;Y.KRUISBERG;Y.KRUISBERG;Schade bovenleiding;Avarie caténaire;Damage catenary;1389;6
+2020-06;2020-06-25;2;LEUVEN;LEUVEN;LEUVEN;Kwaadwillige daad;Acte de malveillance;Malicious act;1173;14
+2020-06;2020-06-25;161;GROENENDAAL;GROENENDAAL;GROENENDAAL;Persoonsongeval;Heurt d'une personne;Collision with a person;1113;40
+2020-06;2020-06-24;59;ZWIJNDRECHT;ZWIJNDRECHT;ZWIJNDRECHT;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1347;18
+2020-06;2020-06-23;124;CHARLEROI-SUD;CHARLEROI-SUD;CHARLEROI-SUD;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1082;16
+2020-06;2020-06-22;75;DEINZE;DEINZE;DEINZE;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1077;28
+2020-06;2020-06-22;161;BOSVOORDE;BOSVOORDE;BOSVOORDE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1322;6
+2020-06;2020-06-19;35;AARSCHOT;AARSCHOT;AARSCHOT;Schade bovenleiding;Avarie caténaire;Damage catenary;1002;48
+2020-06;2020-06-17;36N;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Persoonsongeval;Heurt d'une personne;Collision with a person;1157;26
+2020-06;2020-06-16;94;SAINTES;SAINTES;SAINTES;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1037;25
+2020-06;2020-06-11;124;OBAIX-BUZET;OBAIX-BUZET;OBAIX-BUZET;Dringende werken;Travaux urgents;Urgent works;1101;8
+2020-06;2020-06-02;124;LUTTRE;LUTTRE;LUTTRE;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1715;4
+2020-06;2020-06-02;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1564;10
+2020-05;2020-05-31;0/2;BRUSSEL-ZUID-ROOSTER NZV;BRUXELLES-MIDI-ROOSTER NZV;BRUSSELS-SOUTH-ROOSTER NZV;Brand in het spoor;Incendie dans les voies;Fire in the tracks;1409;44
+2020-05;2020-05-28;161;MONT-SAINT-GUIBERT;MONT-SAINT-GUIBERT;MONT-SAINT-GUIBERT;Persoonsongeval;Heurt d'une personne;Collision with a person;2615;78
+2020-05;2020-05-25;124;LUTTRE;LUTTRE;LUTTRE;Dringende werken;Travaux urgents;Urgent works;1138;24
+2020-05;2020-05-18;36;KORTENBERG;KORTENBERG;KORTENBERG;Persoonsongeval;Heurt d'une personne;Collision with a person;2330;29
+2020-05;2020-05-05;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Bommelding;Alerte à la bombe;Bomb alert;4518;88
+2020-04;2020-04-17;59;SINAAI;SINAAI;SINAAI;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1034;13
+2020-03;2020-03-28;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1435;13
+2020-03;2020-03-21;54;WILLEBROEK;WILLEBROEK;WILLEBROEK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1489;0
+2020-03;2020-03-17;26;HAREN;HAREN;HAREN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3171;50
+2020-03;2020-03-16;-;-;-;-;Maatregelen COVID 19;Mesures COVID 19;Measures COVID 19;3716;900
+2020-03;2020-03-16;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Schade bovenleiding;Avarie caténaire;Damage catenary;1529;40
+2020-04;2020-03-16;-;-;-;-;Maatregelen COVID 19;Mesures COVID 19;Measures COVID 19;2100;175
+2020-03;2020-03-12;96;BUIZINGEN;BUIZINGEN;BUIZINGEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1134;16
+2020-03;2020-03-06;94;HALLE;HALLE;HALLE;Dringende werken;Travaux urgents;Urgent works;1492;23
+2020-03;2020-03-04;161;NAMUR;NAMUR;NAMUR;Schade bovenleiding;Avarie caténaire;Damage catenary;1729;29
+2020-03;2020-03-02;36;LANDEN;LANDEN;LANDEN;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1071;40
+2020-02;2020-02-26;124;WATERLOO;WATERLOO;WATERLOO;Schade bovenleiding;Avarie caténaire;Damage catenary;1090;41
+2020-02;2020-02-25;36N;KORTENBERG;KORTENBERG;KORTENBERG;Persoonsongeval;Heurt d'une personne;Collision with a person;9003;182
+2020-02;2020-02-15;36;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2067;35
+2020-02;2020-02-13;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1372;11
+2020-02;2020-02-13;59/1;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1220;21
+2020-02;2020-02-13;28L/1;SCHAARBEEK-VORMING;SCHAARBEEK-VORMING;SCHAARBEEK-VORMING;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;2360;18
+2020-02;2020-02-09;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;35626;477
+2020-02;2020-02-05;118;OBOURG;OBOURG;OBOURG;Kabeldiefstal;Vol de câbles;Cable theft;1101;29
+2020-02;2020-02-01;54;WILLEBROEK;WILLEBROEK;WILLEBROEK;Storing aan de infrastructuur;Dérangement à l'infrastructure;Infrastructure disturbance;1746;0
+2020-01;2020-01-31;50;SCHELLEBELLE;SCHELLEBELLE;SCHELLEBELLE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1834;104
+2020-01;2020-01-22;1;HALLE-RING;HALLE-RING;HALLE-RING;Schade bovenleiding;Avarie caténaire;Damage catenary;1550;18
+2020-01;2020-01-21;161;BOSVOORDE;BOSVOORDE;BOSVOORDE;Schade bovenleiding;Avarie caténaire;Damage catenary;1649;68
+2020-01;2020-01-21;50C;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1043;8
+2020-01;2020-01-14;94;HALLE;HALLE;HALLE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1146;22
+2020-01;2020-01-03;25;DUFFEL;DUFFEL;DUFFEL;Persoonsongeval;Heurt d'une personne;Collision with a person;4102;75
+2020-01;2020-01-02;25;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;MECHELEN-NEKKERSPOEL;Kwaadwillige daad;Acte de malveillance;Malicious act;1056;14
+2019-12;2019-12-31;25;MORTSEL-OUDE GOD;MORTSEL-OUDE GOD;MORTSEL-OUDE GOD;Schade bovenleiding;Avarie caténaire;Damage catenary;2345;46
+2019-12;2019-12-31;0/5;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;BRUSSEL-KAPELLEKERK;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1299;26
+2019-12;2019-12-27;36;HAREN-ZUID;HAREN-ZUID;HAREN-ZUID;Kwaadwillige daad;Acte de malveillance;Malicious act;3584;33
+2019-12;2019-12-26;96;HALLE;HALLE;HALLE;Schade bovenleiding;Avarie caténaire;Damage catenary;2615;39
+2019-12;2019-12-21;96;RUISBROEK;RUISBROEK;RUISBROEK;Persoonsongeval;Heurt d'une personne;Collision with a person;4436;64
+2019-12;2019-12-18;35;HASSELT;HASSELT;HASSELT;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1264;32
+2019-12;2019-12-18;-;-;-;-;Staking of sociale actie;Mouvement de grève;Strike;3154;82
+2019-12;2019-12-17;124;CHARLEROI-SUD;CHARLEROI-SUD;CHARLEROI-SUD;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1015;12
+2019-12;2019-12-09;59;BELSELE;BELSELE;BELSELE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1136;13
+2019-12;2019-12-05;94;LEUZE;LEUZE;LEUZE;Schade bovenleiding;Avarie caténaire;Damage catenary;2219;114
+2019-12;2019-12-03;1;Y.BEAUREGARD;Y.BEAUREGARD;Y.BEAUREGARD;Aanrijding van een dier;Heurt d'animal;Collision with an animal;2542;2
+2019-11;2019-11-21;36;TIENEN;TIENEN;TIENEN;Persoonsongeval;Heurt d'une personne;Collision with a person;1008;24
+2019-11;2019-11-21;0/5;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;2085;27
+2019-11;2019-11-20;0/5;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1706;32
+2019-11;2019-11-19;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;3008;30
+2019-11;2019-11-19;124;OBAIX-BUZET;OBAIX-BUZET;OBAIX-BUZET;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1728;20
+2019-11;2019-11-16;25;VILVOORDE;VILVOORDE;VILVOORDE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1829;8
+2019-11;2019-11-13;27;MORTSEL;MORTSEL;MORTSEL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1358;16
+2019-11;2019-11-08;75;KORTRIJK;KORTRIJK;KORTRIJK;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;2002;8
+2019-11;2019-11-08;96B;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade hogesnelheidstrein;Avarie train à grande vitesse;Damage high speed train;1373;6
+2019-11;2019-11-04;130;AUVELAIS;AUVELAIS;AUVELAIS;Schade bovenleiding;Avarie caténaire;Damage catenary;1892;75
+2019-10;2019-10-30;36C/2;Y.MACHELEN-ZUID;Y.MACHELEN-ZUID;Y.MACHELEN-ZUID;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;1311;43
+2019-10;2019-10-30;50A;ANDERLECHT-ROOSTER OOST;ANDERLECHT-ROOSTER OOST;ANDERLECHT-ROOSTER OOST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2060;9
+2019-10;2019-10-28;15;BOUWEL;BOUWEL;BOUWEL;Persoonsongeval;Heurt d'une personne;Collision with a person;1012;53
+2019-10;2019-10-28;125;FLEMALLE-HAUTE;FLEMALLE-HAUTE;FLEMALLE-HAUTE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1802;40
+2019-10;2019-10-21;161A;MOUTERIJ;MOUTERIJ;MOUTERIJ;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1427;18
+2019-10;2019-10-15;162;NEUFCHATEAU;NEUFCHATEAU;NEUFCHATEAU;Persoonsongeval;Heurt d'une personne;Collision with a person;1178;40
+2019-10;2019-10-15;-;-;-;-;IT storing;Dérangement informatique;IT disturbance;9891;15
+2019-10;2019-10-10;161;RHISNES;RHISNES;RHISNES;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1252;27
+2019-10;2019-10-07;59;BEERVELDE;BEERVELDE;BEERVELDE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1734;38
+2019-10;2019-10-06;50A;BRUGGE;BRUGGE;BRUGGE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;5552;58
+2019-10;2019-10-04;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1298;21
+2019-10;2019-10-02;25;MECHELEN;MECHELEN;MECHELEN;Schade bovenleiding;Avarie caténaire;Damage catenary;3661;85
+2019-10;2019-10-01;50A;GENT-SINT-PIETERS;GENT-SINT-PIETERS;GENT-SINT-PIETERS;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;2184;22
+2019-09;2019-09-28;59;Y.WEST BERCHEM;Y.WEST BERCHEM;Y.WEST BERCHEM;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1170;51
+2019-09;2019-09-21;59;BEERVELDE;BEERVELDE;BEERVELDE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1230;20
+2019-09;2019-09-18;0/4;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1888;9
+2019-09;2019-09-18;96N;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1974;8
+2019-09;2019-09-16;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1184;27
+2019-09;2019-09-13;124;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;BRAINE-L'ALLEUD;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1821;36
+2019-09;2019-09-12;96E;HALLE-GOEDEREN;HALLE-GOEDEREN;HALLE-GOEDEREN;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1361;27
+2019-09;2019-09-12;26;DIESDELLE;DIESDELLE;DIESDELLE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1297;28
+2019-09;2019-09-09;34;HERSTAL;HERSTAL;HERSTAL;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;2914;280
+2019-09;2019-09-06;15;LIER;LIER;LIER;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1759;22
+2019-08;2019-08-31;25;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;ANTWERPEN-BERCHEM;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1865;5
+2019-08;2019-08-26;35;DIEST;DIEST;DIEST;Persoonsongeval;Heurt d'une personne;Collision with a person;1069;45
+2019-08;2019-08-24;66;LICHTERVELDE;LICHTERVELDE;LICHTERVELDE;Schade bovenleiding;Avarie caténaire;Damage catenary;1309;58
+2019-08;2019-08-20;59;SINAAI;SINAAI;SINAAI;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1072;26
+2019-08;2019-08-14;25;MECHELEN;MECHELEN;MECHELEN;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;3059;74
+2019-08;2019-08-14;36N;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;1701;12
+2019-08;2019-08-14;25;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1006;9
+2019-08;2019-08-10;161;BEUZET;BEUZET;BEUZET;Kabeldiefstal;Vol de câbles;Cable theft;1286;33
+2019-07;2019-07-25;96N;Y.RUISBROEK;Y.RUISBROEK;Y.RUISBROEK;Schade bovenleiding;Avarie caténaire;Damage catenary;4527;57
+2019-07;2019-07-25;89;VICHTE;VICHTE;VICHTE;Schade bovenleiding;Avarie caténaire;Damage catenary;2313;43
+2019-07;2019-07-25;25;MECHELEN;MECHELEN;MECHELEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1226;116
+2019-07;2019-07-25;12;ESSEN;ESSEN;ESSEN;Schade bovenleiding;Avarie caténaire;Damage catenary;1147;25
+2019-07;2019-07-24;1;HALLE;HALLE;HALLE;Schade hogesnelheidstrein;Avarie train à grande vitesse;Damage high speed train;7986;22
+2019-07;2019-07-24;15;DE BIST;DE BIST;DE BIST;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1007;9
+2019-07;2019-07-24;36;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Schade bovenleiding;Avarie caténaire;Damage catenary;2103;15
+2019-07;2019-07-23;58;Y.NOORD DRIEHOEK LEDEBERG;Y.NOORD DRIEHOEK LEDEBERG;Y.NOORD DRIEHOEK LEDEBERG;Schade bovenleiding;Avarie caténaire;Damage catenary;1444;48
+2019-07;2019-07-21;36N;LEUVEN;LEUVEN;LEUVEN;Persoonsongeval;Heurt d'une personne;Collision with a person;1560;25
+2019-07;2019-07-19;15;LIER;LIER;LIER;Persoonsongeval;Heurt d'une personne;Collision with a person;1498;73
+2019-07;2019-07-11;36;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3620;168
+2019-07;2019-07-04;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Reizigersstroom of toevloed reizigers;Affluence de voyageurs;High passenger flow;1001;5
+2019-07;2019-07-03;50A;BEERNEM;BEERNEM;BEERNEM;Persoonsongeval;Heurt d'une personne;Collision with a person;2022;51
+2019-06;2019-06-28;0/3;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;2904;25
+2019-06;2019-06-27;15;OLEN;OLEN;OLEN;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1330;11
+2019-06;2019-06-26;36N;Y.ALBERTBRUG;Y.ALBERTBRUG;Y.ALBERTBRUG;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1006;2
+2019-06;2019-06-26;0/5;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1001;2
+2019-06;2019-06-25;27;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1335;38
+2019-06;2019-06-25;12;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;ANTWERPEN-CENTRAAL;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1135;21
+2019-06;2019-06-24;112;CARNIERES;CARNIERES;CARNIERES;Storing aan een overweg;Dérangement à un passage à niveau;Disturbance at a level crossing;1033;21
+2019-06;2019-06-24;37;PEPINSTER;PEPINSTER;PEPINSTER;Wisselstoring;Dérangement à un aiguillage;Disturbance with switch;1255;11
+2019-06;2019-06-20;60;JETTE;JETTE;JETTE;Aanwezigheid verdacht pakket;Présence d'un colis suspect;Presence of a suspicious package;1403;54
+2019-06;2019-06-20;89;VICHTE;VICHTE;VICHTE;Ongeval aan een overweg;Accident à un passage à niveau;Accident at a level crossing;1312;52
+2019-06;2019-06-19;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1080;2
+2019-06;2019-06-13;25;VILVOORDE;VILVOORDE;VILVOORDE;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1428;62
+2019-06;2019-06-11;0/2;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1807;11
+2019-06;2019-06-06;25;MECHELEN-DIJKSTRAAT;MECHELEN-DIJKSTRAAT;MECHELEN-DIJKSTRAAT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1048;17
+2019-06;2019-06-05;36;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;LIEGE-GUILLEMINS;Lichaam in het spoor;Corps dans les voies;Body in the tracks;1381;26
+2019-05;2019-05-27;0/1;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Aanwezigheid verdacht pakket;Présence d'un colis suspect;Presence of a suspicious package;9005;100
+2019-05;2019-05-19;161;SAINT-DENIS-BOVESSE;SAINT-DENIS-BOVESSE;SAINT-DENIS-BOVESSE;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1280;36
+2019-05;2019-05-18;0/5;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Spoorlopers;Incendie dans les voies;Fire in the tracks;2282;42
+2019-05;2019-05-16;96;BUIZINGEN;BUIZINGEN;BUIZINGEN;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;3666;43
+2019-05;2019-05-15;25;EPPEGEM;EPPEGEM;EPPEGEM;Persoonsongeval;Heurt d'une personne;Collision with a person;1363;35
+2019-05;2019-05-14;25;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Kwaadwillige daad;Acte de malveillance;Malicious act;24757;1080
+2019-05;2019-05-13;25;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1793;34
+2019-05;2019-05-10;75;WAREGEM;WAREGEM;WAREGEM;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1125;8
+2019-05;2019-05-10;0/1;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1859;3
+2019-05;2019-05-09;59;SINAAI;SINAAI;SINAAI;Onsporing goederentrein;Déraillement d'un train de marchandises;Derailment of a freight train;4404;132
+2019-05;2019-05-03;36N;SCHAARBEEK;SCHAARBEEK;SCHAARBEEK;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;6528;60
+2019-05;2019-05-02;0/3;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1732;16
+2019-05;2019-05-02;25;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;ANTWERPEN-LUCHTBAL;Schade bovenleiding;Avarie caténaire;Damage catenary;1755;19
+2019-04;2019-04-30;26;Y.NOORD HALLE;Y.NOORD HALLE;Y.NOORD HALLE;Dringende werken;Travaux urgents;Urgent works;937;27
+2019-04;2019-04-30;26;Y.NOORD HALLE;Y.NOORD HALLE;Y.NOORD HALLE;Dringende werken;Travaux urgents;Urgent works;1706;33
+2019-04;2019-04-29;36;TIENEN;TIENEN;TIENEN;Incident tijdens een werf;Incident pendant un chantier;Incident at a work site;1263;27
+2019-04;2019-04-26;50C;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Brand in de nabijheid van het spoor;Incendie à proximité des voies;Fire near the tracks;1720;31
+2019-04;2019-04-24;116;LA LOUVIERE-GARE INDUSTRIELLE;LA LOUVIERE-GARE INDUSTRIELLE;LA LOUVIERE-GARE INDUSTRIELLE;Obstakel in de nabijheid van het spoor;Obstacle dans/à proximité de la voie;Obstacle in/near the tracks;1303;24
+2019-04;2019-04-18;50A;Y.SINT-KATHERINA-LOMBEEK;Y.SINT-KATHERINA-LOMBEEK;Y.SINT-KATHERINA-LOMBEEK;Schade bovenleiding;Avarie caténaire;Damage catenary;1319;17
+2019-04;2019-04-17;0/1;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1901;22
+2019-04;2019-04-03;36;ANS;ANS;ANS;Kwaadwillige daad;Acte de malveillance;Malicious act;1849;20
+2019-04;2019-04-02;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Kabeldiefstal;Vol de câbles;Cable theft;3079;132
+2019-04;2019-04-02;130;FARCIENNES;FARCIENNES;FARCIENNES;Persoonsongeval;Heurt d'une personne;Collision with a person;2075;58
+2019-03;2019-03-29;59;BEERVELDE;BEERVELDE;BEERVELDE;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1265;26
+2019-03;2019-03-22;161;GROENENDAAL;GROENENDAAL;GROENENDAAL;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1285;17
+2019-03;2019-03-21;25;Y.BERCHEM-STADION;Y.BERCHEM-STADION;Y.BERCHEM-STADION;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1614;10
+2019-03;2019-03-10;-;-;-;-;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;12415;686
+2019-03;2019-03-06;118;BRACQUEGNIES;BRACQUEGNIES;BRACQUEGNIES;Laattijdig einde van werken;Terminaison tardive de travaux;Late completion of works;1468;20
+2019-03;2019-03-05;0/3;BRUSSEL-ZUID;BRUXELLES-MIDI;BRUSSELS-SOUTH;Seinvoorbijrijding;Dépassement d'un signal rouge;Crossing of a red signal;2242;21
+2019-03;2019-03-04;161;Y.JOSAPHAT;Y.JOSAPHAT;Y.JOSAPHAT;Schade bovenleiding;Avarie caténaire;Damage catenary;1218;18
+2019-03;2019-03-01;94;Y.NOORD HALLE;Y.NOORD HALLE;Y.NOORD HALLE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1276;8
+2019-03;2019-02-25;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Dringende werken;Travaux urgents;Urgent works;362;0
+2019-02;2019-02-25;94;SAINTES;SAINTES;SAINTES;Persoonsongeval;Heurt d'une personne;Collision with a person;1665;86
+2019-02;2019-02-25;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Dringende werken;Travaux urgents;Urgent works;1172;0
+2019-02;2019-02-25;27;Y.NOORD BERCHEM;Y.NOORD BERCHEM;Y.NOORD BERCHEM;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1270;8
+2019-02;2019-02-18;161;OTTIGNIES;OTTIGNIES;OTTIGNIES;Dringende werken;Travaux urgents;Urgent works;1315;2
+2019-02;2019-02-14;96;Y.RUISBROEK;Y.RUISBROEK;Y.RUISBROEK;Schade bovenleiding;Avarie caténaire;Damage catenary;1038;45
+2019-02;2019-02-12;-;-;-;-;Sociale actie;Mouvement de grève;Strike;1283;54
+2019-02;2019-02-11;4;NOORDERKEMPEN;NOORDERKEMPEN;NOORDERKEMPEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1500;88
+2019-02;2019-02-11;50C;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;ANDERLECHT-ROOSTER WEST;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1303;12
+2019-02;2019-02-06;161;LA HULPE;LA HULPE;LA HULPE;Lichaam in het spoor;Corps dans les voies;Body in the tracks;1900;33
+2019-02;2019-02-05;130;RONET;RONET;RONET;Kabeldiefstal;Vol de câbles;Cable theft;1292;70
+2019-02;2019-02-04;0/1;BRUSSEL-CENTRAAL;BRUXELLES-CENTRAL;BRUSSELS-CENTRAL;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1756;5
+2019-02;2019-02-01;27;VILVOORDE;VILVOORDE;VILVOORDE;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;1411;16
+2019-01;2019-01-27;-;-;-;-;Reizigersstroom of toevloed reizigers;Affluence de voyageurs;High passenger flow;1651;0
+2019-01;2019-01-27;35;AARSCHOT;AARSCHOT;AARSCHOT;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;3285;106
+2019-01;2019-01-26;0/2;BRUSSEL-CONGRES;BRUSSEL-CONGRES;BRUSSEL-CONGRES;Brand in het spoor;Incendie dans les voies;Fire in the tracks;3380;97
+2019-01;2019-01-23;124;DE HOEK;DE HOEK;DE HOEK;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1379;16
+2019-01;2019-01-21;161;GEMBLOUX;GEMBLOUX;GEMBLOUX;Schade bovenleiding;Avarie caténaire;Damage catenary;1043;26
+2019-01;2019-01-18;161;GROENENDAAL;GROENENDAAL;GROENENDAAL;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;4388;89
+2019-01;2019-01-18;2;LEUVEN;LEUVEN;LEUVEN;Uitzonderlijke weersomstandigheden;Conditions météorologiques exceptionnelles;Exceptional weather conditions;1579;14
+2019-01;2019-01-17;50A;BEERNEM;BEERNEM;BEERNEM;Persoonsongeval;Heurt d'une personne;Collision with a person;1214;35
+2019-01;2019-01-15;50A;Y.MEULEWIJK;Y.MEULEWIJK;Y.MEULEWIJK;Schade bovenleiding;Avarie caténaire;Damage catenary;1776;23
+2019-01;2019-01-15;0/2;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Spoorlopers;Intrusion dans les voies;Intrusion into the tracks;2799;22
+2019-01;2019-01-14;161/2;BRUSSEL-NOORD;BRUXELLES-NORD;BRUSSELS-NORTH;Storing seininrichting;Dérangement à la signalisation;Disturbance with signalling;1096;2
+2019-01;2019-01-08;59;BELSELE;BELSELE;BELSELE;Schade treinmaterieel;Avarie matériel roulant;Damage rolling stock;1491;23
+2019-01;2019-01-08;25;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;SINT-KATELIJNE-WAVER;Persoonsongeval;Heurt d'une personne;Collision with a person;3340;50
+2019-01;2019-01-04;96;HALLE;HALLE;HALLE;Persoonsongeval;Heurt d'une personne;Collision with a person;2393;75
+2019-01;2019-01-03;96;SOIGNIES;SOIGNIES;SOIGNIES;Schade bovenleiding;Avarie caténaire;Damage catenary;1513;41
