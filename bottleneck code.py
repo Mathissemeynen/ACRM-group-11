@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import os
 import glob
-from datetime import datetime
 from collections import Counter
 from scipy import stats
 
@@ -670,15 +669,15 @@ def classify_incident(incident_description):
                 return category
     return 'OPERATIONAL'  # Default category
 
-def create_incident_station_mapping(incidents, stations):
+def create_incident_station_mapping(incidents, stations, trips_station_names):
     """Create mapping between incident locations and station names - FIXED VERSION"""
     print("Creating incident-station mapping...")
 
-    # Standardize station names for matching
-    station_names = set(stations['name'].str.upper().str.strip())
-
-    # Also include the stopping place names from trips for better matching
-    all_station_variations = set(station_names)
+    # Use the actual station names from trips data, but ensure they're strings
+    trips_stations = set()
+    for station in trips_station_names:
+        if pd.notna(station):  # Skip NaN values
+            trips_stations.add(str(station).strip().upper())
 
     incident_station_map = {}
     mapped_count = 0
@@ -703,47 +702,85 @@ def create_incident_station_mapping(incidents, stations):
         # Convert to uppercase for matching
         incident_place_upper = incident_place.upper()
 
-        # Try exact match first
-        if incident_place_upper in all_station_variations:
+        # FIRST: Try exact match with trips station names
+        if incident_place_upper in trips_stations:
             incident_station_map[incident_place] = incident_place_upper
             mapped_count += 1
             continue
 
-        # Try common variations and partial matches
-        matched_station = None
+        # SECOND: Handle combined Dutch/French names in incidents data
+        # If incident has combined name like "BRUSSEL-NOORD/BRUXELLES-NORD", extract Dutch part
+        if '/' in incident_place_upper:
+            dutch_part = incident_place_upper.split('/')[0].strip()
+            if dutch_part in trips_stations:
+                incident_station_map[incident_place] = dutch_part
+                mapped_count += 1
+                continue
 
-        # Common name variations mapping
+        # THIRD: Try common variations
         name_variations = {
-            'BRUXELLES': 'BRUSSEL',
             'BRUXELLES-': 'BRUSSEL-',
+            'BRUXELLES': 'BRUSSEL',
             'ANVERS': 'ANTWERPEN',
             'GAND': 'GENT',
             'LIEGE': 'LIÈGE',
-            'LUIK': 'LIÈGE'
+            'LUIK': 'LIÈGE',
+            'MONS': 'BERGEN',
+            'TOURNAI': 'DOORNIK',
+            'NAMUR': 'NAMEN',
+            'CHARLEROI': 'CHARLEROI',
+            'LOUVAIN': 'LEUVEN',
+            'MALINES': 'MECHELEN',
+            'HAELEN': 'HALLE',
+            'TERVUEREN': 'TERVUREN'
         }
 
-        # Apply variations
         test_name = incident_place_upper
         for old, new in name_variations.items():
             test_name = test_name.replace(old, new)
 
-        # Try direct match after variations
-        if test_name in all_station_variations:
-            matched_station = test_name
-        else:
-            # Try partial matching
-            for station in all_station_variations:
-                if (test_name in station or station in test_name or
-                        test_name.replace('-', ' ') in station or
-                        station.replace('-', ' ') in test_name):
-                    matched_station = station
-                    break
+        if test_name in trips_stations:
+            incident_station_map[incident_place] = test_name
+            mapped_count += 1
+            continue
 
-        if matched_station:
-            incident_station_map[incident_place] = matched_station
+        # FOURTH: Try fuzzy matching
+        best_match = None
+        best_score = 0
+
+        for station in trips_stations:
+            # Ensure station is string for string operations
+            if not isinstance(station, str):
+                continue
+
+            score = 0
+
+            # Remove common suffixes
+            clean_incident = test_name.replace('STATION', '').replace('GARE', '').strip('- ').strip()
+            clean_station = station.replace('STATION', '').replace('GARE', '').strip('- ').strip()
+
+            if clean_incident == clean_station:
+                score = 100
+            elif clean_incident in clean_station:
+                score = 80
+            elif clean_station in clean_incident:
+                score = 80
+            elif clean_incident.replace('-', ' ') == clean_station.replace('-', ' '):
+                score = 90
+            elif clean_incident.replace('-', ' ') in clean_station.replace('-', ' '):
+                score = 70
+            elif clean_station.replace('-', ' ') in clean_incident.replace('-', ' '):
+                score = 70
+
+            if score > best_score:
+                best_score = score
+                best_match = station
+
+        if best_score >= 70:
+            incident_station_map[incident_place] = best_match
             mapped_count += 1
         else:
-            # If no match found, use original name but log it
+            # FIFTH: If still no match, use the incident name as-is and hope it matches
             incident_station_map[incident_place] = incident_place_upper
             unmapped_count += 1
 
@@ -753,11 +790,183 @@ def create_incident_station_mapping(incidents, stations):
 
     # Show some examples of mappings
     print("Sample incident-station mappings:")
-    for i, (incident_place, station) in enumerate(list(incident_station_map.items())[:5]):
+    for i, (incident_place, station) in enumerate(list(incident_station_map.items())[:10]):
         print(f"  '{incident_place}' → '{station}'")
 
     return incident_station_map
 
+def apply_incidental_delay_filter(trips, delay_metrics, incidents, stations):
+    """STEP 7: Remove delays caused by external incidents - FIXED DATE HANDLING"""
+    print("\n=== STEP 7: INCIDENTAL DELAY FILTER ===")
+
+    # Get all unique station names from trips for matching
+    trips_station_names = trips['Stopping place'].unique()
+
+    # Create incident-station mapping using trips station names
+    incident_station_map = create_incident_station_mapping(incidents, stations, trips_station_names)
+
+    # Calculate incidental delay impact
+    daily_incident_impact = calculate_incidental_delay_impact(trips, incidents, incident_station_map, stations)
+
+    # Create adjusted delay metrics
+    adjusted_delay_metrics = delay_metrics.copy()
+
+    # For each station, calculate total delay to remove based on incidents
+    removal_summary = {}
+
+    # Debug: Check date ranges - handle NaT values
+    valid_trip_dates = trips['planned_departure_datetime'].dropna().dt.date.unique()
+    incident_dates = set(date for date, station in daily_incident_impact.keys())
+
+    if len(valid_trip_dates) > 0:
+        print(f"Trip date range: {min(valid_trip_dates)} to {max(valid_trip_dates)}")
+    else:
+        print("No valid trip dates found!")
+
+    if len(incident_dates) > 0:
+        print(f"Incident date range: {min(incident_dates)} to {max(incident_dates)}")
+    else:
+        print("No incident dates found!")
+
+    # Check for overlapping dates
+    if len(valid_trip_dates) > 0 and len(incident_dates) > 0:
+        overlapping_dates = set(valid_trip_dates) & incident_dates
+        print(f"Overlapping dates between trips and incidents: {len(overlapping_dates)}")
+
+        if not overlapping_dates:
+            print("⚠ WARNING: No overlapping dates between trips and incidents data!")
+            print("This means the incidents occurred on dates when we don't have trip data.")
+            print("Using alternative method: remove delays based on incident patterns regardless of exact dates.")
+    else:
+        print("⚠ Cannot check overlapping dates due to missing data")
+        overlapping_dates = set()
+
+    for station in adjusted_delay_metrics['Stopping place']:
+        # Find incidents affecting this station - use exact match
+        station_incidents = []
+
+        for (incident_date, incident_station), impact in daily_incident_impact.items():
+            if incident_station == station:
+                station_incidents.append((incident_date, impact))
+
+        if not station_incidents:
+            continue
+
+        # Calculate total delay to remove for this station
+        total_delay_to_remove = 0
+        date_matches_found = 0
+
+        for incident_date, impact in station_incidents:
+            # Get the station's total delay on that date
+            try:
+                station_delays_on_date = trips[
+                    (trips['Stopping place'] == station) &
+                    (trips['planned_departure_datetime'].dt.date == incident_date)
+                    ]
+
+                if len(station_delays_on_date) > 0:
+                    date_matches_found += 1
+                    total_delay_on_date = station_delays_on_date['departure_delay'].sum()
+
+                    if total_delay_on_date > 0:
+                        # Calculate what portion of the delay was due to incidents
+                        incident_ratio = min(impact['total_incident_delay'] / total_delay_on_date, 1.0)
+                        if impact['total_incident_delay'] > 0:
+                            delay_to_remove = total_delay_on_date * incident_ratio * (impact['weighted_removal'] / impact['total_incident_delay'])
+                            total_delay_to_remove += delay_to_remove
+            except Exception as e:
+                continue
+
+        # If no date matches found, use a simpler approach: remove based on incident severity
+        if date_matches_found == 0 and station_incidents:
+            total_incident_delay = sum(impact['weighted_removal'] for _, impact in station_incidents)
+            # Use a conservative estimate: remove up to 10% of station's delay based on incident severity
+            original_delay = adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
+            ].iloc[0]
+
+            # Only remove if incidents are significant compared to station's total delay
+            if total_incident_delay > original_delay * 0.1:  # Incidents account for at least 10% of delay
+                total_delay_to_remove = min(total_incident_delay * 0.3, original_delay * 0.3)  # Remove up to 30%
+
+        # Apply the removal to the station's total delay
+        if total_delay_to_remove > 0.1:
+            original_delay = adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
+            ].iloc[0]
+
+            new_delay = max(original_delay - total_delay_to_remove, 0)
+            adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
+            ] = new_delay
+
+            # Also adjust the delay impact metric
+            travelers = adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'avg_weekday_travelers'
+            ].iloc[0]
+
+            new_impact = new_delay * (travelers / 1000)
+            adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'delay_times_1000_travelers'
+            ] = new_impact
+
+            removal_summary[station] = {
+                'original_delay': original_delay,
+                'delay_removed': total_delay_to_remove,
+                'new_delay': new_delay,
+                'reduction_pct': (total_delay_to_remove / original_delay * 100) if original_delay > 0 else 0,
+                'method': 'date_matched' if date_matches_found > 0 else 'estimated'
+            }
+
+    # Display removal summary
+    print_incident_removal_summary(removal_summary)
+
+    return adjusted_delay_metrics, removal_summary
+def print_incident_removal_summary(removal_summary):
+    """Print a concise summary of incident delay removal - ENHANCED VERSION"""
+    print(f"\n=== INCIDENT DELAY REMOVAL SUMMARY ===")
+
+    if not removal_summary:
+        print("No delays were removed by the incidental delay filter.")
+        print("This could be due to:")
+        print("  - Incident dates not matching trip dates")
+        print("  - Station names not matching between incidents and trips")
+        print("  - Incidents below the minimum delay threshold")
+        return
+
+    print(f"Applied incidental delay filter to {len(removal_summary)} stations")
+
+    total_original_delay = sum(info['original_delay'] for info in removal_summary.values())
+    total_delay_removed = sum(info['delay_removed'] for info in removal_summary.values())
+
+    print(f"Total delay before incidents filter: {total_original_delay:,.0f} minutes")
+    print(f"Total delay removed: {total_delay_removed:,.0f} minutes")
+    print(f"Remaining structural delay: {total_original_delay - total_delay_removed:,.0f} minutes")
+
+    if total_original_delay > 0:
+        print(f"Overall reduction: {total_delay_removed/total_original_delay*100:.1f}%")
+    else:
+        print("Overall reduction: 0.0%")
+
+    # Count methods used
+    methods = {}
+    for info in removal_summary.values():
+        method = info.get('method', 'unknown')
+        methods[method] = methods.get(method, 0) + 1
+
+    print(f"\nRemoval methods used:")
+    for method, count in methods.items():
+        print(f"  {method}: {count} stations")
+
+    # Show top stations by delay removal
+    print(f"\nTop 10 stations by incident delay removal:")
+    top_removals = sorted(removal_summary.items(),
+                          key=lambda x: x[1]['delay_removed'], reverse=True)[:10]
+
+    for station, info in top_removals:
+        method = info.get('method', 'unknown')
+        print(f"  {station:25} | {info['delay_removed']:6.0f} min removed "
+              f"({info['reduction_pct']:5.1f}%) [{method}]")
 def calculate_incidental_delay_impact(trips, incidents, incident_station_map, stations):
     """Calculate how much delay should be removed for each station due to incidents - FIXED VERSION"""
     print("Calculating incidental delay impact...")
@@ -835,113 +1044,361 @@ def calculate_incidental_delay_impact(trips, incidents, incident_station_map, st
 
     return daily_incident_impact
 
-def apply_incidental_delay_filter(trips, delay_metrics, incidents, stations):
-    """STEP 7: Remove delays caused by external incidents - FIXED VERSION"""
-    print("\n=== STEP 7: INCIDENTAL DELAY FILTER ===")
+def analyze_route_incident_prone_patterns(trips, incidents, stations):
+    """STEP 7: Analyze historical incident patterns with WEEKLY NORMALIZATION"""
+    print("\n=== STEP 7: HISTORICAL INCIDENT PRONENESS ANALYSIS ===")
+    print("Using historical incidents as training data (normalized to weekly averages)...")
+
+    # Get all unique routes from trips
+    routes = trips[['Relation', 'Relation direction']].drop_duplicates()
+    print(f"Analyzing {len(routes)} unique routes from recent trips data")
 
     # Create incident-station mapping
-    incident_station_map = create_incident_station_mapping(incidents, stations)
+    trips_station_names = trips['Stopping place'].unique()
+    incident_station_map = create_incident_station_mapping(incidents, stations, trips_station_names)
 
-    # Calculate incidental delay impact
-    daily_incident_impact = calculate_incidental_delay_impact(trips, incidents, incident_station_map, stations)
+    # Classify incidents and calculate removal factors
+    incidents_classified = incidents.copy()
+    incidents_classified['Incident date'] = pd.to_datetime(incidents_classified['Incident date'], errors='coerce')
+    incidents_classified = incidents_classified[incidents_classified['Incident date'].notna()]
+    incidents_classified['category'] = incidents_classified['Incident description'].apply(classify_incident)
+
+    # Calculate removal factor for each incident
+    def get_removal_factor(category):
+        if category == 'EXTERNAL':
+            return EXTERNAL_REMOVAL_FACTOR
+        elif category == 'INFRASTRUCTURE':
+            return INFRASTRUCTURE_REMOVAL_FACTOR
+        else:
+            return OPERATIONAL_REMOVAL_FACTOR
+
+    incidents_classified['removal_factor'] = incidents_classified['category'].apply(get_removal_factor)
+    incidents_classified['weighted_delay'] = incidents_classified['Minutes of delay'] * incidents_classified['removal_factor']
+
+    print(f"✓ Classified {len(incidents_classified)} historical incidents")
+
+    # Calculate the time period for normalization
+    incident_start_date = incidents_classified['Incident date'].min()
+    incident_end_date = incidents_classified['Incident date'].max()
+    total_incident_days = (incident_end_date - incident_start_date).days + 1
+    total_incident_weeks = total_incident_days / 7.0
+
+    print(f"✓ Incident data covers {total_incident_days} days ({total_incident_weeks:.1f} weeks)")
+    print(f"✓ From {incident_start_date.date()} to {incident_end_date.date()}")
+
+    # Analyze incident patterns per route with WEEKLY normalization
+    route_incident_analysis = []
+
+    for _, route in routes.iterrows():
+        relation = route['Relation']
+        direction = route['Relation direction']
+
+        # Get all trips for this route in recent data (for normalization)
+        route_trips_recent = trips[
+            (trips['Relation'] == relation) &
+            (trips['Relation direction'] == direction)
+            ].copy()
+
+        if len(route_trips_recent) == 0:
+            continue
+
+        # Get all stations on this route
+        route_stations = route_trips_recent['Stopping place'].unique()
+
+        # Count historical incidents affecting this route (regardless of date)
+        route_incidents = []
+        total_historical_incident_delay = 0
+        total_weighted_incident_delay = 0
+
+        for _, incident in incidents_classified.iterrows():
+            if incident['Minutes of delay'] < MIN_INCIDENT_DELAY:
+                continue
+
+            # Find incident location
+            incident_place = None
+            for col in ['Place', 'Place_1', 'Place_2', 'Place_3', 'Location']:
+                if col in incidents_classified.columns:
+                    place_value = incident[col]
+                    if pd.notna(place_value) and place_value != '-' and place_value != '':
+                        incident_place = str(place_value).strip()
+                        break
+
+            if incident_place is None:
+                continue
+
+            incident_station = incident_station_map.get(incident_place)
+            if incident_station and incident_station in route_stations:
+                route_incidents.append(incident)
+                total_historical_incident_delay += incident['Minutes of delay']
+                total_weighted_incident_delay += incident['weighted_delay']
+
+        # Calculate route statistics from recent trips
+        total_recent_trips = len(route_trips_recent)
+        total_recent_delay = route_trips_recent['departure_delay'].sum()
+        avg_delay_per_trip = total_recent_delay / total_recent_trips if total_recent_trips > 0 else 0
+
+        # Calculate WEEKLY NORMALIZED incident proneness metrics
+        incident_count = len(route_incidents)
+
+        if total_recent_trips > 0 and total_incident_weeks > 0:
+            # KEY FIX: Calculate weekly average incidents instead of total incidents
+            weekly_avg_incidents = incident_count / total_incident_weeks
+
+            # Now calculate incidents per trip in a typical week
+            incidents_per_trip = weekly_avg_incidents / total_recent_trips
+
+            # Estimate incidental delay percentage based on weekly normalized data
+            if incident_count > 0:
+                avg_incident_delay = total_historical_incident_delay / incident_count
+                avg_weighted_incident_delay = total_weighted_incident_delay / incident_count
+
+                # Estimate incidental delay percentage more conservatively
+                # Using weekly normalized incidents per trip
+                base_incidental_estimate = min(incidents_per_trip * 100 * 5, 50)  # Scale factor 5, cap at 50%
+
+                # Adjust based on incident severity
+                if avg_incident_delay > 30:  # High severity incidents
+                    severity_adjustment = 1.3
+                elif avg_incident_delay > 15:  # Medium severity
+                    severity_adjustment = 1.1
+                else:  # Low severity
+                    severity_adjustment = 1.0
+
+                estimated_incidental_pct = min(base_incidental_estimate * severity_adjustment, 60)  # Max 60%
+            else:
+                estimated_incidental_pct = 0
+                incidents_per_trip = 0
+        else:
+            incidents_per_trip = 0
+            estimated_incidental_pct = 0
+            weekly_avg_incidents = 0
+
+        route_incident_analysis.append({
+            'Relation': relation,
+            'Direction': direction,
+            'total_recent_trips': total_recent_trips,
+            'total_recent_delay': total_recent_delay,
+            'avg_delay_per_trip': avg_delay_per_trip,
+            'historical_incident_count': incident_count,
+            'weekly_avg_incidents': weekly_avg_incidents,
+            'historical_incidents_per_trip': incidents_per_trip,
+            'total_historical_incident_delay': total_historical_incident_delay,
+            'total_weighted_incident_delay': total_weighted_incident_delay,
+            'estimated_incidental_pct': estimated_incidental_pct,
+            'route_stations_count': len(route_stations)
+        })
+
+    # Create analysis DataFrame
+    analysis_df = pd.DataFrame(route_incident_analysis)
+
+    # Filter routes with sufficient data
+    reliable_routes = analysis_df[
+        (analysis_df['total_recent_trips'] >= 10)  # At least 10 recent trips
+    ].copy()
+
+    print(f"✓ Analyzed {len(reliable_routes)} routes with sufficient recent data")
+
+    # Calculate overall statistics
+    if len(reliable_routes) > 0:
+        avg_incidents_per_trip = reliable_routes['historical_incidents_per_trip'].mean()
+        max_incidents_per_trip = reliable_routes['historical_incidents_per_trip'].max()
+        routes_with_incidents = reliable_routes[reliable_routes['historical_incident_count'] > 0]
+
+        print(f"✓ Average weekly incidents per trip: {avg_incidents_per_trip:.6f}")
+        print(f"✓ Maximum weekly incidents per trip: {max_incidents_per_trip:.6f}")
+        print(f"✓ Routes with historical incidents: {len(routes_with_incidents)}")
+        print(f"✓ Average estimated incidental delays: {reliable_routes['estimated_incidental_pct'].mean():.1f}%")
+
+    return reliable_routes, analysis_df
+
+def print_incident_proneness_analysis(reliable_routes):
+    """Print analysis of which routes are most incident-prone based on WEEKLY historical data"""
+    print(f"\n=== HISTORICAL INCIDENT PRONENESS ANALYSIS (Weekly Normalized) ===")
+
+    # Routes with highest incident frequency
+    print(f"\n--- TOP 15 MOST INCIDENT-PRONE ROUTES (Weekly Historical Averages) ---")
+    top_incident_prone = reliable_routes.nlargest(15, 'historical_incidents_per_trip')[
+        ['Relation', 'Direction', 'historical_incidents_per_trip', 'weekly_avg_incidents',
+         'historical_incident_count', 'total_recent_trips', 'estimated_incidental_pct', 'avg_delay_per_trip']
+    ].round(6)
+
+    for _, route in top_incident_prone.iterrows():
+        if route['historical_incidents_per_trip'] > 0:
+            print(f"{route['Relation']} ({route['Direction']}):")
+            print(f"  Weekly incidents per trip: {route['historical_incidents_per_trip']:.6f}")
+            print(f"  {route['weekly_avg_incidents']:.2f} avg weekly incidents ({route['historical_incident_count']} total historical)")
+            print(f"  {route['total_recent_trips']} recent weekly trips")
+            print(f"  Estimated {route['estimated_incidental_pct']:.1f}% of delays are incidental")
+            print(f"  Recent avg delay: {route['avg_delay_per_trip']:.1f} min/trip")
+            print()
+
+    # Show distribution of incident proneness
+    print(f"\n--- INCIDENT PRONENESS DISTRIBUTION (Weekly) ---")
+    bins = [0, 0.0001, 0.0005, 0.001, 0.005, 0.01, 1.0]
+    bin_labels = ['0', '0.0001-0.0005', '0.0005-0.001', '0.001-0.005', '0.005-0.01', '0.01+']
+
+    for i in range(len(bins)-1):
+        lower, upper = bins[i], bins[i+1]
+        count = len(reliable_routes[
+                        (reliable_routes['historical_incidents_per_trip'] >= lower) &
+                        (reliable_routes['historical_incidents_per_trip'] < upper)
+                        ])
+        if upper == 1.0:
+            print(f"  {lower} or more: {count} routes")
+        else:
+            print(f"  {bin_labels[i]}: {count} routes")
+
+def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
+    """STEP 7: Apply incidental delay filter based on WEEKLY historical incident proneness"""
+    print("\n=== STEP 7: APPLYING INCIDENT PRONENESS FILTER (Weekly Normalized) ===")
 
     # Create adjusted delay metrics
     adjusted_delay_metrics = delay_metrics.copy()
-
-    # For each station, calculate total delay to remove based on incidents
     removal_summary = {}
 
+    # Create station-route mapping
+    station_routes = {}
+    for _, route in route_incident_prone.iterrows():
+        relation = route['Relation']
+        direction = route['Direction']
+
+        # Get all stations on this route
+        route_trips = trips[
+            (trips['Relation'] == relation) &
+            (trips['Relation direction'] == direction)
+            ]
+
+        route_stations = route_trips['Stopping place'].unique()
+
+        for station in route_stations:
+            if station not in station_routes:
+                station_routes[station] = []
+
+            station_routes[station].append({
+                'relation': relation,
+                'direction': direction,
+                'historical_incidents_per_trip': route['historical_incidents_per_trip'],
+                'estimated_incidental_pct': route['estimated_incidental_pct'],
+                'route_trips': len(route_trips),
+                'weekly_avg_incidents': route['weekly_avg_incidents']
+            })
+
+    print(f"Mapped {len(station_routes)} stations to routes")
+
+    # For each station, calculate weighted average incidental percentage
     for station in adjusted_delay_metrics['Stopping place']:
-        # Find incidents affecting this station
-        station_incidents = []
-
-        for (incident_date, incident_station), impact in daily_incident_impact.items():
-            if incident_station == station:
-                station_incidents.append((incident_date, impact))
-
-        if not station_incidents:
+        if station not in station_routes:
             continue
 
-        # Calculate total delay to remove for this station
-        total_delay_to_remove = 0
+        routes = station_routes[station]
 
-        for incident_date, impact in station_incidents:
-            # Get the station's total delay on that date
-            station_delays_on_date = trips[
-                (trips['Stopping place'] == station) &
-                (trips['planned_departure_datetime'].dt.date == incident_date)
-                ]
+        # Only consider routes with meaningful incident proneness (now much lower threshold)
+        meaningful_routes = [r for r in routes if r['historical_incidents_per_trip'] > 0.0001]  # Much lower threshold
 
-            if len(station_delays_on_date) == 0:
-                continue
+        if not meaningful_routes:
+            continue
 
-            total_delay_on_date = station_delays_on_date['departure_delay'].sum()
+        # Calculate weighted average based on route usage and incident proneness
+        total_weight = 0
+        weighted_incidental_pct = 0
 
-            if total_delay_on_date > 0:
-                # Calculate what portion of the delay was due to incidents
-                incident_ratio = min(impact['total_incident_delay'] / total_delay_on_date, 1.0)
-                delay_to_remove = total_delay_on_date * incident_ratio * (impact['weighted_removal'] / impact['total_incident_delay'])
-                total_delay_to_remove += delay_to_remove
+        for route_info in meaningful_routes:
+            # Weight by both route usage AND incident proneness
+            weight = route_info['route_trips'] * route_info['historical_incidents_per_trip']
+            total_weight += weight
+            weighted_incidental_pct += route_info['estimated_incidental_pct'] * weight
 
-        # Apply the removal to the station's total delay (but only if significant)
-        if total_delay_to_remove > 10:  # Only remove if more than 10 minutes
+        if total_weight > 0:
+            avg_incidental_pct = weighted_incidental_pct / total_weight
+        else:
+            avg_incidental_pct = 0
+
+        # Apply removal based on WEEKLY historical incident proneness
+        # Much more conservative thresholds now
+        if avg_incidental_pct > 2:  # Only remove if estimated >2% incidental (was 15%)
+            # Be more conservative for major hubs
+            station_centrality = adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'degree_centrality'
+            ].iloc[0]
+
+            if station_centrality > 0.7:  # Major hub
+                removal_pct = min(avg_incidental_pct, 10.0) / 100.0  # Max 10% removal for hubs (was 25%)
+            else:
+                removal_pct = min(avg_incidental_pct, 15.0) / 100.0  # Max 15% removal for others (was 40%)
+
             original_delay = adjusted_delay_metrics.loc[
                 adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
             ].iloc[0]
 
-            new_delay = max(original_delay - total_delay_to_remove, 0)
+            delay_to_remove = original_delay * removal_pct
+            new_delay = max(original_delay - delay_to_remove, 0)
+
             adjusted_delay_metrics.loc[
                 adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
             ] = new_delay
 
+            # Also adjust the delay impact metric
+            travelers = adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'avg_weekday_travelers'
+            ].iloc[0]
+
+            new_impact = new_delay * (travelers / 1000)
+            adjusted_delay_metrics.loc[
+                adjusted_delay_metrics['Stopping place'] == station, 'delay_times_1000_travelers'
+            ] = new_impact
+
             removal_summary[station] = {
                 'original_delay': original_delay,
-                'delay_removed': total_delay_to_remove,
+                'delay_removed': delay_to_remove,
                 'new_delay': new_delay,
-                'reduction_pct': (total_delay_to_remove / original_delay * 100) if original_delay > 0 else 0
+                'reduction_pct': removal_pct * 100,
+                'avg_incidental_pct': avg_incidental_pct,
+                'route_count': len(meaningful_routes),
+                'avg_incidents_per_trip': sum(r['historical_incidents_per_trip'] for r in meaningful_routes) / len(meaningful_routes),
+                'avg_weekly_incidents': sum(r['weekly_avg_incidents'] for r in meaningful_routes) / len(meaningful_routes)
             }
 
     # Display removal summary
-    print_incident_removal_summary(removal_summary)
+    print_incident_proneness_removal_summary(removal_summary)
 
     return adjusted_delay_metrics, removal_summary
 
-def print_incident_removal_summary(removal_summary):
-    """Print a concise summary of incident delay removal - FIXED VERSION"""
-    print(f"\n=== INCIDENT DELAY REMOVAL SUMMARY ===")
+def print_incident_proneness_removal_summary(removal_summary):
+    """Print removal summary based on WEEKLY historical incident proneness"""
+    print(f"\n=== INCIDENT PRONENESS FILTER SUMMARY (Weekly Normalized) ===")
 
     if not removal_summary:
-        print("No delays were removed by the incidental delay filter.")
-        print("This could be due to:")
-        print("  - Incident dates not matching trip dates")
-        print("  - Station names not matching between incidents and trips")
-        print("  - Incidents below the minimum delay threshold")
+        print("No substantial incidental delays estimated based on weekly historical patterns.")
+        print("This suggests most delays in recent data are structural and within NMBS control.")
         return
 
-    print(f"Applied incidental delay filter to {len(removal_summary)} stations")
+    print(f"Applied incident proneness filter to {len(removal_summary)} stations")
 
     total_original_delay = sum(info['original_delay'] for info in removal_summary.values())
     total_delay_removed = sum(info['delay_removed'] for info in removal_summary.values())
 
-    print(f"Total delay before incidents filter: {total_original_delay:,.0f} minutes")
-    print(f"Total delay removed: {total_delay_removed:,.0f} minutes")
-    print(f"Remaining structural delay: {total_original_delay - total_delay_removed:,.0f} minutes")
+    print(f"Total delay before incident filter: {total_original_delay:,.0f} minutes")
+    print(f"Total delay estimated as incidental: {total_delay_removed:,.0f} minutes")
+    print(f"Remaining structural delay (within NMBS control): {total_original_delay - total_delay_removed:,.0f} minutes")
 
     if total_original_delay > 0:
-        print(f"Overall reduction: {total_delay_removed/total_original_delay*100:.1f}%")
-    else:
-        print("Overall reduction: 0.0%")
+        overall_reduction = (total_delay_removed / total_original_delay) * 100
+        print(f"Overall reduction (estimated incidental): {overall_reduction:.1f}%")
 
-    # Show top stations by delay removal
-    print(f"\nTop 10 stations by incident delay removal:")
-    top_removals = sorted(removal_summary.items(),
-                          key=lambda x: x[1]['delay_removed'], reverse=True)[:10]
+    # Show stations with incidental delay removal
+    print(f"\nStations with estimated incidental delays (based on weekly historical patterns):")
+    sorted_removals = sorted(removal_summary.items(), key=lambda x: x[1]['delay_removed'], reverse=True)
 
-    for station, info in top_removals:
+    for station, info in sorted_removals[:20]:  # Show top 20 only
         print(f"  {station:25} | {info['delay_removed']:6.0f} min removed "
-              f"({info['reduction_pct']:5.1f}%)")
+              f"({info['reduction_pct']:4.1f}%) | "
+              f"Est. incidental: {info['avg_incidental_pct']:5.1f}% | "
+              f"Routes: {info['route_count']} | "
+              f"Weekly incidents/trip: {info['avg_incidents_per_trip']:.6f}")
+
+
 def main():
-    """Main analysis function with all steps including incidental delay filter"""
+    """Main analysis function with all steps including route-based incidental delay filter"""
     print("STARTING COMPLETE BOTTLENECK ANALYSIS PIPELINE")
     print("=" * 60)
 
@@ -990,9 +1447,20 @@ def main():
     print("STEP 6 COMPLETED - PROCEEDING TO INCIDENTAL DELAY FILTER")
     print("=" * 60)
 
-    # STEP 7: Incidental Delay Filter
-    incident_adjusted_metrics, removal_summary = apply_incidental_delay_filter(
-        trips, propagation_adjusted_metrics, incidents, stations
+
+    # STEP 7: Realistic Route-based Incidental Delay Filter
+    # STEP 7: Historical Incident Proneness Analysis
+    print("\n=== HISTORICAL INCIDENT PATTERN ANALYSIS ===")
+    print("Using historical incidents as training data to identify routes prone to external delays...")
+
+    route_incident_prone, all_routes_analysis = analyze_route_incident_prone_patterns(trips, incidents, stations)
+
+    # Print the incident proneness analysis
+    print_incident_proneness_analysis(route_incident_prone)
+
+    print("\n=== APPLYING INCIDENT PRONENESS FILTER ===")
+    incident_adjusted_metrics, removal_summary = apply_incident_proneness_filter(
+        trips, propagation_adjusted_metrics, route_incident_prone
     )
 
     # Recalculate bottleneck scores with incidental delays removed
@@ -1008,13 +1476,17 @@ def main():
     # Save final results
     final_bottleneck_metrics.to_csv('final_bottleneck_metrics.csv', index=False)
     propagation_adjusted_metrics.to_csv('propagation_adjusted_metrics.csv', index=False)
+    route_incident_prone.to_csv('route_vulnerability_analysis.csv', index=False)
+    all_routes_analysis.to_csv('all_routes_analysis.csv', index=False)
 
     print("\n" + "=" * 60)
     print("ANALYSIS COMPLETED SUCCESSFULLY!")
     print("✓ Steps 1-5: Basic bottleneck identification")
     print("✓ Step 6: Propagation filter (route-wide delays)")
-    print("✓ Step 7: Incidental delay filter (external factors)")
+    print("✓ Step 7: Route-based incidental delay filter (external factors)")
+    print("✓ Route vulnerability analysis completed")
     print(f"✓ Final results saved to 'final_bottleneck_metrics.csv'")
+    print(f"✓ Route analysis saved to 'route_vulnerability_analysis.csv'")
 
     return final_bottleneck_metrics
 
