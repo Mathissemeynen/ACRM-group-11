@@ -1148,6 +1148,131 @@ def print_incident_proneness_removal_summary(removal_summary):
               f"Routes: {info['route_count']} | "
               f"Weekly incidents/trip: {info['avg_incidents_per_trip']:.6f}")
 
+def filter_actual_stops(trips):
+    """Filter out trains that don't actually stop at stations (arrival = departure)"""
+    print("\n=== FILTERING ACTUAL STOPS ===")
+
+    # Store original count
+    original_count = len(trips)
+
+    # Create copies of the time columns as strings for comparison
+    trips['actual_arrival_str'] = trips['Actual arrival time'].astype(str)
+    trips['actual_departure_str'] = trips['Actual departure time'].astype(str)
+    trips['planned_arrival_str'] = trips['Planned arrival time'].astype(str)
+    trips['planned_departure_str'] = trips['Planned departure time'].astype(str)
+
+    # Filter condition: Remove rows where train doesn't actually stop
+    # A train is considered to NOT stop if:
+    # 1. Actual arrival time = Actual departure time, AND
+    # 2. Planned arrival time = Planned departure time
+    stops_filter = ~(
+            (trips['actual_arrival_str'] == trips['actual_departure_str']) &
+            (trips['planned_arrival_str'] == trips['planned_departure_str'])
+    )
+
+    filtered_trips = trips[stops_filter].copy()
+
+    # Remove the temporary string columns
+    filtered_trips = filtered_trips.drop(['actual_arrival_str', 'actual_departure_str',
+                                          'planned_arrival_str', 'planned_departure_str'], axis=1)
+
+    # Count removed records
+    removed_count = original_count - len(filtered_trips)
+
+    # Calculate skipped stops (planned to stop but didn't)
+    skipped_stops_mask = (trips['actual_arrival_str'] == trips['actual_departure_str']) & (trips['planned_arrival_str'] != trips['planned_departure_str'])
+    skipped_stops_count = skipped_stops_mask.sum()
+
+    # Calculate total planned stops
+    planned_stops_mask = (trips['planned_arrival_str'] != trips['planned_departure_str'])
+    total_planned_stops = planned_stops_mask.sum()
+
+    # Calculate skipped percentage of planned stops
+    skipped_pct_of_planned = (skipped_stops_count / total_planned_stops * 100) if total_planned_stops > 0 else 0
+
+    print(f"✓ Original trip records: {original_count:,}")
+    print(f"✓ After filtering pass-throughs: {len(filtered_trips):,}")
+    print(f"✓ Removed {removed_count:,} pass-through records ({removed_count/original_count*100:.1f}% of total)")
+    print(f"\nStop Planning Analysis:")
+    print(f"  - Total planned stops: {total_planned_stops:,}")
+    print(f"  - Actually skipped stops: {skipped_stops_count:,} ({skipped_pct_of_planned:.1f}% of planned stops)")
+    print(f"  - Pass-throughs (never planned to stop): {removed_count:,}")
+
+    # REMOVED: Pass-through station ranking (not actionable)
+    # ADDED: Critical skipped stops analysis
+
+    if skipped_stops_count > 0:
+        # Calculate skipped stops by station with percentages
+        skipped_by_station = []
+        for station in trips['Stopping place'].unique():
+            station_mask = trips['Stopping place'] == station
+            planned_at_station = planned_stops_mask[station_mask].sum()
+            skipped_at_station = skipped_stops_mask[station_mask].sum()
+
+            if planned_at_station > 0 and skipped_at_station > 0:
+                skipped_pct = (skipped_at_station / planned_at_station * 100)
+                skipped_by_station.append({
+                    'station': station,
+                    'skipped_count': skipped_at_station,
+                    'planned_count': planned_at_station,
+                    'skipped_pct': skipped_pct
+                })
+
+        # Sort by both count and percentage to find most critical
+        skipped_by_station.sort(key=lambda x: (x['skipped_count'], x['skipped_pct']), reverse=True)
+
+        print(f"\n🚨 CRITICAL OPERATIONAL ISSUES - Stations with most skipped stops:")
+        print(f"{'Station':<25} {'Skipped':<8} {'Planned':<8} {'Skip Rate':<10}")
+        print("-" * 55)
+        for i, station_data in enumerate(skipped_by_station[:15]):
+            if station_data['skipped_pct'] > 10:  # Only show stations with >10% skip rate
+                print(f"{station_data['station']:<25} {station_data['skipped_count']:<8} {station_data['planned_count']:<8} {station_data['skipped_pct']:<10.1f}%")
+
+    return filtered_trips
+
+def analyze_stop_patterns(trips):
+    """Analyze stop patterns to understand station skipping behavior"""
+    print("\n=== STOP PATTERNS ANALYSIS ===")
+
+    # Use string comparison for stop duration analysis
+    planned_non_stops = (trips['Planned arrival time'] == trips['Planned departure time'])
+    actual_non_stops = (trips['Actual arrival time'] == trips['Actual departure time'])
+    planned_stops = (trips['Planned arrival time'] != trips['Planned departure time'])
+    actual_stops = (trips['Actual arrival time'] != trips['Actual departure time'])
+
+    # Categorize stop patterns for filtered data
+    skipped_stops_count = (planned_stops & actual_non_stops).sum()
+    extra_stops_count = (planned_non_stops & actual_stops).sum()
+    normal_stops_count = (planned_stops & actual_stops).sum()
+    total_filtered = len(trips)
+
+    print("Stop patterns in filtered data (actual stops only):")
+    print(f"  ✅ Normal stops (planned and executed): {normal_stops_count:,} ({normal_stops_count/total_filtered*100:.1f}%)")
+    print(f"  ⚠️  Extra stops (unplanned but executed): {extra_stops_count:,} ({extra_stops_count/total_filtered*100:.1f}%)")
+    print(f"  🚨 Skipped stops (planned but not executed): {skipped_stops_count:,} ({skipped_stops_count/total_filtered*100:.1f}%)")
+
+    # Analyze operational impact of skipped stops
+    if skipped_stops_count > 0:
+        print(f"\n🔍 OPERATIONAL IMPACT ANALYSIS:")
+
+        # Calculate delay impact of skipped stops
+        skipped_trips = trips[planned_stops & actual_non_stops]
+        if len(skipped_trips) > 0:
+            avg_delay_skipped = skipped_trips['departure_delay'].mean() if 'departure_delay' in skipped_trips.columns else 0
+            print(f"  - Average delay on routes with skipped stops: {avg_delay_skipped:.1f} minutes")
+
+        # Most problematic routes for skipping
+        route_skipping = trips[planned_stops & actual_non_stops].groupby(['Relation', 'Relation direction']).size().sort_values(ascending=False).head(10)
+        if len(route_skipping) > 0:
+            print(f"\n  📊 Routes with most skipped stops:")
+            for (relation, direction), count in route_skipping.items():
+                print(f"     {relation} ({direction}): {count} skipped stops")
+
+    return {
+        'normal_stops': normal_stops_count,
+        'extra_stops': extra_stops_count,
+        'skipped_stops': skipped_stops_count
+    }
 
 def main():
     """Main analysis function with all steps including route-based incidental delay filter"""
@@ -1156,6 +1281,11 @@ def main():
 
     # Step 1: Load and preprocess data
     trips, stations, travelers, incidents = load_all_data()
+    # Filter out trains that don't actually stop
+    trips = filter_actual_stops(trips)
+    # Analyze stop patterns (optional, for insights)
+    stop_patterns = analyze_stop_patterns(trips)
+
     trips, morning_peak, evening_peak = preprocess_data(trips)
 
     # Step 2: Basic delay metrics
