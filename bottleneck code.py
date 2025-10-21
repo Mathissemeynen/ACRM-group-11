@@ -4,11 +4,10 @@ import os
 import glob
 from collections import Counter
 from scipy import stats
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, r2_score
+
 
 # =============================================================================
-# CONFIGURATION CONSTANTS - EASY TWEAKING
+# CONFIGURATION CONSTANTS
 # =============================================================================
 
 # Step 2: Basic Delay Metrics
@@ -40,7 +39,7 @@ BOTTLENECK_METRICS = [
 
 # Incident classification and removal factors
 INCIDENT_CATEGORIES = {
-    'EXTERNAL': [  # 90% removal - completely beyond NMBS control
+    'EXTERNAL': [  # 90% removal - mostly beyond NMBS control
         'suspicious package', 'intrusion into tracks', 'collision with person',
         'malicious act', 'fire near tracks', 'bomb alert', 'body in tracks',
         'obstacle in/near tracks', 'exceptional weather conditions', 'strike',
@@ -63,13 +62,12 @@ INCIDENT_CATEGORIES = {
 EXTERNAL_REMOVAL_FACTOR = 0.9
 INFRASTRUCTURE_REMOVAL_FACTOR = 0.7
 OPERATIONAL_REMOVAL_FACTOR = 0.3
-MIN_INCIDENT_DELAY = 100  # Ignore incidents below this threshold
+MIN_INCIDENT_DELAY = 60  # Ignore incidents below this threshold
 
 
 
 def robust_fix_travelers_data():
-    """Properly fix the travelers.csv with all stations"""
-    print("Fixing travelers data...")
+    """fix the travelers.csv with all stations"""
 
     with open("data/travelers.csv", 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -93,7 +91,7 @@ def robust_fix_travelers_data():
         f.writelines(new_lines)
 
     travelers = pd.read_csv("data/travelers_fixed.csv")
-    print(f"✓ Fixed travelers data: {len(travelers)} stations")
+    print(f" Fixed travelers data: {len(travelers)} stations")
     return travelers
 
 def create_complete_travelers_dataset(travelers, stations, trips):
@@ -156,7 +154,7 @@ def create_complete_travelers_dataset(travelers, stations, trips):
         }
         enhanced_travelers = pd.concat([enhanced_travelers, pd.DataFrame([new_row])], ignore_index=True)
 
-    print(f"✓ Enhanced travelers data: {len(enhanced_travelers)} stations "
+    print(f" Enhanced travelers data: {len(enhanced_travelers)} stations "
           f"(added {len(station_estimates)} missing stations)")
 
     return enhanced_travelers
@@ -164,7 +162,6 @@ def create_complete_travelers_dataset(travelers, stations, trips):
 def load_all_data():
     """STEP 1: Load all necessary data files"""
     print("=== STEP 1: DATA PREPARATION ===")
-    print("Loading all data files...")
 
     # Load trips data
     trips_folder = "data/Trips"
@@ -177,14 +174,13 @@ def load_all_data():
         all_trips.append(df)
 
     trips = pd.concat(all_trips, ignore_index=True)
-    print(f"✓ Loaded {len(trips):,} trip records from {len(trips_files)} files")
+    print(f" Loaded {len(trips):,} trip records from {len(trips_files)} files")
 
     # Load other datasets
     stations = pd.read_csv("data/stations.csv")
     travelers = robust_fix_travelers_data()  # Use the robust fixed version
     # Load incidents with proper semicolon separator and handle duplicate columns
     incidents = pd.read_csv("data/incidents.csv", sep=';')
-    print(f"Original incidents columns: {list(incidents.columns)}")
 
     # Handle duplicate column names - rename them
     if len(incidents.columns) >= 6:  # We expect at least 6 columns
@@ -198,11 +194,10 @@ def load_all_data():
                     new_columns[i] = f'Place_{place_count}'
 
         incidents.columns = new_columns
-        print(f"Renamed incidents columns: {list(incidents.columns)}")
 
-    print(f"✓ Loaded {len(stations)} stations")
-    print(f"✓ Loaded {len(travelers)} traveler records")
-    print(f"✓ Loaded {len(incidents)} incidents")
+    print(f" Loaded {len(stations)} stations")
+    print(f" Loaded {len(travelers)} traveler records")
+    print(f" Loaded {len(incidents)} incidents")
 
     return trips, stations, travelers, incidents
 
@@ -229,10 +224,10 @@ def preprocess_data(trips):
     trips['is_peak'] = trips['departure_hour'].isin(morning_peak + evening_peak)
     trips['is_weekday'] = ~trips['planned_departure_datetime'].dt.dayofweek.isin([5, 6])
 
-    print("✓ Converted timestamps to datetime objects")
-    print("✓ Standardized delay units (seconds → minutes)")
-    print("✓ Defined peak hours: 7-9 AM and 4-6 PM")
-    print("✓ Added weekday/weekend classification")
+    print("- Converted timestamps to datetime objects")
+    print("- Standardized delay units into minutes")
+    print("- peak hours set to 6:00-9:00 and 16:00-18:00")
+    print("- Added weekday/weekend classification")
 
     return trips, morning_peak, evening_peak
 
@@ -243,7 +238,7 @@ def calculate_basic_delay_metrics(trips):
     # Filter for peak hours on weekdays (when bottlenecks matter most)
     peak_weekday_trips = trips[(trips['is_peak']) & (trips['is_weekday'])]
 
-    print(f"Analyzing {len(peak_weekday_trips):,} peak-hour weekday trips")
+    print(f"Analysing {len(peak_weekday_trips):,} peak-hour weekday trips")
 
     # Calculate basic metrics
     delay_metrics = peak_weekday_trips.groupby('Stopping place').agg({
@@ -266,8 +261,8 @@ def calculate_basic_delay_metrics(trips):
     # Fill NaN values with 0
     delay_metrics = delay_metrics.fillna(0)
 
-    print(f"✓ Calculated metrics for {len(delay_metrics)} stations")
-    print("✓ Metrics include: total trains, total delay, average delay, severe delays (>5min & >15min)")
+    print(f" Calculated metrics for {len(delay_metrics)} stations")
+    print(" Metrics include: total trains, total delay, average delay, severe delays (>5min & >15min)")
 
     # Display top stations by total delay
     print("\nTop 10 stations by total delay (peak hours, weekdays):")
@@ -298,19 +293,11 @@ def reliable_normalize_with_travelers(delay_metrics, travelers):
     # Remove duplicates (keep first occurrence)
     merged = merged.drop_duplicates(subset=['Stopping place'], keep='first')
 
-    print(f"✓ Final normalized data: {len(merged)} unique stations")
+    print(f" Final normalized data: {len(merged)} unique stations")
 
     # Verify Brussels stations
     brussels_stations = ['BRUSSEL-CENTRAAL', 'BRUSSEL-ZUID', 'BRUSSEL-NOORD',
                          'BRUSSEL-CONGRES', 'BRUSSEL-KAPELLEKERK', 'SCHAARBEEK']
-
-    print("\nBrussels stations verification:")
-    for station in brussels_stations:
-        station_data = merged[merged['Stopping place'] == station]
-        if len(station_data) > 0:
-            travelers_val = station_data['avg_weekday_travelers'].iloc[0]
-            impact_val = station_data['delay_times_1000_travelers'].iloc[0]
-            print(f"  {station}: {travelers_val:,.0f} travelers, impact={impact_val:,.2f}")
 
     # Display top stations by delay impact
     print("\nTop 10 stations by delay impact (delay × travelers):")
@@ -346,7 +333,7 @@ def build_route_graph(trips):
     # Count frequency of each edge
     edge_counts = Counter(edges)
 
-    print(f"✓ Built directed graph with {len(edge_counts)} unique edges")
+    print(f" Built directed graph with {len(edge_counts)} unique edges")
 
     # Calculate centrality (degree centrality)
     station_degrees = {}
@@ -358,7 +345,7 @@ def build_route_graph(trips):
     max_degree = max(station_degrees.values()) if station_degrees else 1
     centrality = {station: degree/max_degree for station, degree in station_degrees.items()}
 
-    print(f"✓ Calculated degree centrality for {len(centrality)} stations")
+    print(f" Calculated degree centrality for {len(centrality)} stations")
 
     # Display top stations by centrality
     centrality_df = pd.DataFrame(list(centrality.items()), columns=['Stopping place', 'degree_centrality'])
@@ -379,13 +366,13 @@ def calculate_composite_bottleneck_score(final_metrics):
     available_metrics = []
     for metric in metrics_to_include:
         if metric in final_metrics.columns:
-            print(f"  ✓ {metric}")
+            print(f"   {metric}")
             available_metrics.append(metric)
         else:
             print(f"  ✗ {metric} (missing)")
 
     if not available_metrics:
-        print("❌ No metrics available for scoring!")
+        print(" No metrics available for scoring!")
         return final_metrics
 
     # Calculate Z-scores for each metric
@@ -401,7 +388,7 @@ def calculate_composite_bottleneck_score(final_metrics):
         zscores = np.nan_to_num(zscores, nan=0.0)
 
         zscore_data[f'z_{metric}'] = zscores
-        print(f"✓ Calculated Z-scores for {metric}")
+        print(f" Calculated Z-scores for {metric}")
 
     # Create DataFrame of Z-scores
     zscore_df = pd.DataFrame(zscore_data)
@@ -412,7 +399,7 @@ def calculate_composite_bottleneck_score(final_metrics):
     # Rank stations by bottleneck score (lower rank = more critical)
     final_metrics['bottleneck_rank'] = final_metrics['bottleneck_score'].rank(ascending=False, method='min')
 
-    print(f"✓ Calculated composite bottleneck scores for {len(final_metrics)} stations")
+    print(f" Calculated composite bottleneck scores for {len(final_metrics)} stations")
 
     return final_metrics
 
@@ -435,46 +422,6 @@ def display_bottleneck_ranking(final_metrics):
 
     return top_bottlenecks
 
-def analyze_bottleneck_patterns(top_bottlenecks):
-    """Analyze patterns in the bottleneck ranking"""
-    print("\n=== BOTTLENECK PATTERNS ANALYSIS ===")
-
-    # Categorize stations by their primary bottleneck characteristic
-    patterns = []
-
-    for _, station in top_bottlenecks.iterrows():
-        name = station['Stopping place']
-        score = station['bottleneck_score']
-        delay_impact = station['delay_times_1000_travelers']
-        centrality = station['degree_centrality']
-        total_delay = station['total_delay_minutes']
-        total_trains = station['total_trains']
-
-        # Determine primary bottleneck characteristic
-        if centrality > 0.8 and total_delay > 5000:
-            pattern = "MAJOR HUB: High connectivity + high delays"
-        elif delay_impact > 50000:
-            pattern = "HIGH IMPACT: Massive delay × passenger volume"
-        elif total_delay > 7000:
-            pattern = "DELAY HOTSPOT: Extreme total delays"
-        elif total_trains > 1800:
-            pattern = "HIGH TRAFFIC: Many trains during peak"
-        elif centrality > 0.7:
-            pattern = "NETWORK CRITICAL: High connectivity"
-        else:
-            pattern = "MIXED: Multiple contributing factors"
-
-        patterns.append((name, pattern, score))
-
-    print("Bottleneck categories in top 20:")
-    pattern_counts = {}
-    for name, pattern, score in patterns:
-        print(f"  {name:25} → {pattern}")
-        pattern_counts[pattern] = pattern_counts.get(pattern, 0) + 1
-
-    print(f"\nPattern distribution:")
-    for pattern, count in pattern_counts.items():
-        print(f"  {pattern}: {count} stations")
 
 def proper_propagation_filter(trips, delay_metrics):
     """STEP 6: Filter out delays that are route-wide patterns, not station-specific"""
@@ -498,7 +445,7 @@ def proper_propagation_filter(trips, delay_metrics):
 
     # Filter routes with sufficient data
     reliable_routes = route_stats[route_stats['route_trip_count'] >= MIN_ROUTE_TRIPS]
-    print(f"Analyzing {len(reliable_routes)} routes with sufficient data")
+    print(f"Analyzing {len(reliable_routes)} routes")
 
     # For each station-route combination, calculate performance
     station_route_performance = []
@@ -624,7 +571,7 @@ def proper_propagation_filter(trips, delay_metrics):
                          ] * 100).round(2)
 
 
-    print(f"✓ Applied responsibility factors to {len(responsibility_factors)} stations")
+    print(f" Applied responsibility factors to {len(responsibility_factors)} stations")
 
     return adjusted_delay_metrics, performance_df, systemic_routes
 
@@ -784,14 +731,9 @@ def create_incident_station_mapping(incidents, stations, trips_station_names):
             incident_station_map[incident_place] = incident_place_upper
             unmapped_count += 1
 
-    print(f"✓ Mapped {mapped_count} incident locations to stations")
+    print(f" Mapped {mapped_count} incident locations to stations")
     if unmapped_count > 0:
-        print(f"⚠ {unmapped_count} incident locations could not be reliably mapped")
-
-    # Show some examples of mappings
-    print("Sample incident-station mappings:")
-    for i, (incident_place, station) in enumerate(list(incident_station_map.items())[:10]):
-        print(f"  '{incident_place}' → '{station}'")
+        print(f" {unmapped_count} incident locations could not be reliably mapped")
 
     return incident_station_map
 
@@ -827,7 +769,7 @@ def analyze_route_incident_prone_patterns(trips, incidents, stations):
     incidents_classified['removal_factor'] = incidents_classified['category'].apply(get_removal_factor)
     incidents_classified['weighted_delay'] = incidents_classified['Minutes of delay'] * incidents_classified['removal_factor']
 
-    print(f"✓ Classified {len(incidents_classified)} historical incidents")
+    print(f" Classified {len(incidents_classified)} historical incidents")
 
     # Calculate the time period for normalization
     incident_start_date = incidents_classified['Incident date'].min()
@@ -835,8 +777,8 @@ def analyze_route_incident_prone_patterns(trips, incidents, stations):
     total_incident_days = (incident_end_date - incident_start_date).days + 1
     total_incident_weeks = total_incident_days / 7.0
 
-    print(f"✓ Incident data covers {total_incident_days} days ({total_incident_weeks:.1f} weeks)")
-    print(f"✓ From {incident_start_date.date()} to {incident_end_date.date()}")
+    print(f" Incident data covers {total_incident_days} days ({total_incident_weeks:.1f} weeks)")
+    print(f" From {incident_start_date.date()} to {incident_end_date.date()}")
 
     # Analyze incident patterns per route with WEEKLY normalization
     route_incident_analysis = []
@@ -948,7 +890,7 @@ def analyze_route_incident_prone_patterns(trips, incidents, stations):
         (analysis_df['total_recent_trips'] >= 10)  # At least 10 recent trips
     ].copy()
 
-    print(f"✓ Analyzed {len(reliable_routes)} routes with sufficient recent data")
+    print(f" Analyzed {len(reliable_routes)} routes with sufficient recent data")
 
     # Calculate overall statistics
     if len(reliable_routes) > 0:
@@ -956,8 +898,8 @@ def analyze_route_incident_prone_patterns(trips, incidents, stations):
         max_incidents_per_trip = reliable_routes['historical_incidents_per_trip'].max()
         routes_with_incidents = reliable_routes[reliable_routes['historical_incident_count'] > 0]
 
-        print(f"✓ Routes with historical incidents: {len(routes_with_incidents)}")
-        print(f"✓ Average estimated incidental delays: {reliable_routes['estimated_incidental_pct'].mean():.1f}%")
+        print(f" Routes with historical incidents: {len(routes_with_incidents)}")
+        print(f" Average estimated incidental delays: {reliable_routes['estimated_incidental_pct'].mean():.1f}%")
 
     return reliable_routes, analysis_df
 
@@ -981,25 +923,9 @@ def print_incident_proneness_analysis(reliable_routes):
             print(f"  Recent avg delay: {route['avg_delay_per_trip']:.1f} min/trip")
             print()
 
-    # Show distribution of incident proneness
-    print(f"\n--- INCIDENT PRONENESS DISTRIBUTION (Weekly) ---")
-    bins = [0, 0.0001, 0.0005, 0.001, 0.005, 0.01, 1.0]
-    bin_labels = ['0', '0.0001-0.0005', '0.0005-0.001', '0.001-0.005', '0.005-0.01', '0.01+']
-
-    for i in range(len(bins)-1):
-        lower, upper = bins[i], bins[i+1]
-        count = len(reliable_routes[
-                        (reliable_routes['historical_incidents_per_trip'] >= lower) &
-                        (reliable_routes['historical_incidents_per_trip'] < upper)
-                        ])
-        if upper == 1.0:
-            print(f"  {lower} or more: {count} routes")
-        else:
-            print(f"  {bin_labels[i]}: {count} routes")
-
 def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
-    """STEP 7: Apply incidental delay filter based on WEEKLY historical incident proneness"""
-    print("\n=== STEP 7: APPLYING INCIDENT PRONENESS FILTER (Weekly Normalized) ===")
+    """STEP 7: Apply incidental delay filter with MORE REALISTIC thresholds"""
+    print("\n=== STEP 7: APPLYING INCIDENT PRONENESS FILTER ===")
 
     # Create adjusted delay metrics
     adjusted_delay_metrics = delay_metrics.copy()
@@ -1029,7 +955,8 @@ def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
                 'historical_incidents_per_trip': route['historical_incidents_per_trip'],
                 'estimated_incidental_pct': route['estimated_incidental_pct'],
                 'route_trips': len(route_trips),
-                'weekly_avg_incidents': route['weekly_avg_incidents']
+                'weekly_avg_incidents': route['weekly_avg_incidents'],
+                'total_historical_incident_delay': route['total_historical_incident_delay']
             })
 
     print(f"Mapped {len(station_routes)} stations to routes")
@@ -1041,8 +968,8 @@ def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
 
         routes = station_routes[station]
 
-        # Only consider routes with meaningful incident proneness (now much lower threshold)
-        meaningful_routes = [r for r in routes if r['historical_incidents_per_trip'] > 0.0001]  # Much lower threshold
+        # Only consider routes with meaningful incident proneness - LOWER THRESHOLD
+        meaningful_routes = [r for r in routes if r['historical_incidents_per_trip'] > 0.00001]  # Much lower threshold
 
         if not meaningful_routes:
             continue
@@ -1052,8 +979,11 @@ def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
         weighted_incidental_pct = 0
 
         for route_info in meaningful_routes:
-            # Weight by both route usage AND incident proneness
-            weight = route_info['route_trips'] * route_info['historical_incidents_per_trip']
+            # Weight by both route usage AND incident proneness AND total historical delay
+            weight = (route_info['route_trips'] *
+                      route_info['historical_incidents_per_trip'] *
+                      max(1, route_info['total_historical_incident_delay'] / 1000))  # Scale by historical impact
+
             total_weight += weight
             weighted_incidental_pct += route_info['estimated_incidental_pct'] * weight
 
@@ -1062,18 +992,18 @@ def apply_incident_proneness_filter(trips, delay_metrics, route_incident_prone):
         else:
             avg_incidental_pct = 0
 
-        # Apply removal based on WEEKLY historical incident proneness
-        # Much more conservative thresholds now
-        if avg_incidental_pct > 2:  # Only remove if estimated >2% incidental (was 15%)
-            # Be more conservative for major hubs
+        # ADJUSTED THRESHOLDS - BE MORE AGGRESSIVE
+        # Apply removal based on historical incident proneness with REALISTIC thresholds
+        if avg_incidental_pct > 0.01:
+            # Be more conservative for major hubs, but still apply some removal
             station_centrality = adjusted_delay_metrics.loc[
                 adjusted_delay_metrics['Stopping place'] == station, 'degree_centrality'
             ].iloc[0]
 
             if station_centrality > 0.7:  # Major hub
-                removal_pct = min(avg_incidental_pct, 10.0) / 100.0  # Max 10% removal for hubs (was 25%)
+                removal_pct = min(avg_incidental_pct, 8.0) / 100.0  # Max 8% removal for hubs (was 10%)
             else:
-                removal_pct = min(avg_incidental_pct, 15.0) / 100.0  # Max 15% removal for others (was 40%)
+                removal_pct = min(avg_incidental_pct, 12.0) / 100.0  # Max 12% removal for others (was 15%)
 
             original_delay = adjusted_delay_metrics.loc[
                 adjusted_delay_metrics['Stopping place'] == station, 'total_delay_minutes'
@@ -1187,9 +1117,9 @@ def filter_actual_stops(trips):
     # Calculate skipped percentage of planned stops
     skipped_pct_of_planned = (skipped_stops_count / total_planned_stops * 100) if total_planned_stops > 0 else 0
 
-    print(f"✓ Original trip records: {original_count:,}")
-    print(f"✓ After filtering pass-throughs: {len(filtered_trips):,}")
-    print(f"✓ Removed {removed_count:,} pass-through records ({removed_count/original_count*100:.1f}% of total)")
+    print(f" Original trip records: {original_count:,}")
+    print(f" After filtering pass-throughs: {len(filtered_trips):,}")
+    print(f" Removed {removed_count:,} pass-through records ({removed_count/original_count*100:.1f}% of total)")
     print(f"\nStop Planning Analysis:")
     print(f"  - Total planned stops: {total_planned_stops:,}")
     print(f"  - Actually skipped stops: {skipped_stops_count:,} ({skipped_pct_of_planned:.1f}% of planned stops)")
@@ -1218,7 +1148,7 @@ def filter_actual_stops(trips):
         # Sort by both count and percentage to find most critical
         skipped_by_station.sort(key=lambda x: (x['skipped_count'], x['skipped_pct']), reverse=True)
 
-        print(f"\n🚨 CRITICAL OPERATIONAL ISSUES - Stations with most skipped stops:")
+        print(f"\nStations with most skipped stops:")
         print(f"{'Station':<25} {'Skipped':<8} {'Planned':<8} {'Skip Rate':<10}")
         print("-" * 55)
         for i, station_data in enumerate(skipped_by_station[:15]):
@@ -1228,7 +1158,7 @@ def filter_actual_stops(trips):
     return filtered_trips
 
 def analyze_stop_patterns(trips):
-    """Analyze stop patterns to understand station skipping behavior"""
+    """Analyse stop patterns to understand station skipping behavior"""
     print("\n=== STOP PATTERNS ANALYSIS ===")
 
     # Use string comparison for stop duration analysis
@@ -1244,18 +1174,17 @@ def analyze_stop_patterns(trips):
     total_filtered = len(trips)
 
     print("Stop patterns in filtered data (actual stops only):")
-    print(f"  ✅ Normal stops (planned and executed): {normal_stops_count:,} ({normal_stops_count/total_filtered*100:.1f}%)")
-    print(f"  ⚠️  Extra stops (unplanned but executed): {extra_stops_count:,} ({extra_stops_count/total_filtered*100:.1f}%)")
-    print(f"  🚨 Skipped stops (planned but not executed): {skipped_stops_count:,} ({skipped_stops_count/total_filtered*100:.1f}%)")
+    print(f" Normal stops (planned and executed): {normal_stops_count:,} ({normal_stops_count/total_filtered*100:.1f}%)")
+    print(f" Extra stops (unplanned but executed): {extra_stops_count:,} ({extra_stops_count/total_filtered*100:.1f}%)")
+    print(f" Skipped stops (planned but not executed): {skipped_stops_count:,} ({skipped_stops_count/total_filtered*100:.1f}%)")
 
     # Analyze operational impact of skipped stops
     if skipped_stops_count > 0:
-        print(f"\n🔍 OPERATIONAL IMPACT ANALYSIS:")
 
         # Most problematic routes for skipping
         route_skipping = trips[planned_stops & actual_non_stops].groupby(['Relation', 'Relation direction']).size().sort_values(ascending=False).head(10)
         if len(route_skipping) > 0:
-            print(f"\n  📊 Routes with most skipped stops:")
+            print(f"\n   Routes with most skipped stops:")
             for (relation, direction), count in route_skipping.items():
                 print(f"     {relation} ({direction}): {count} skipped stops")
 
@@ -1266,7 +1195,7 @@ def analyze_stop_patterns(trips):
     }
 def create_enhanced_travelers_dataset(original_travelers, trips, tickets, subscriptions):
     """Create complete travelers dataset using predictive modeling for missing stations"""
-    print("Creating enhanced travelers dataset")
+    print("Creating complete travelers dataset")
 
     # Get all stations from trips data
     all_stations_from_trips = set(trips['Stopping place'].unique())
@@ -1282,7 +1211,7 @@ def create_enhanced_travelers_dataset(original_travelers, trips, tickets, subscr
     print(f"Stations needing estimation: {len(missing_stations)}")
 
     if len(missing_stations) == 0:
-        print("✓ No missing stations - using original traveler data")
+        print(" No missing stations - using original traveler data")
         return original_travelers
 
     # Process ticket and subscription data
@@ -1298,7 +1227,7 @@ def create_enhanced_travelers_dataset(original_travelers, trips, tickets, subscr
     enhanced_travelers = original_travelers.copy()
 
     if model is None:
-        print("⚠ Could not build model - using fallback method")
+        print(" Could not build model - using fallback method")
         enhanced_travelers = apply_simple_fallback(enhanced_travelers, missing_stations, ticket_counts, subscription_counts)
     else:
         # Predict missing stations
@@ -1316,17 +1245,14 @@ def create_enhanced_travelers_dataset(original_travelers, trips, tickets, subscr
             }
             enhanced_travelers = pd.concat([enhanced_travelers, pd.DataFrame([new_row])], ignore_index=True)
 
-        # Show some extreme predictions to see how unrealistic they are
-        show_extreme_predictions(predictions)
 
-    print(f"✓ Enhanced travelers data: {len(enhanced_travelers)} stations "
+    print(f" Enhanced travelers data: {len(enhanced_travelers)} stations "
           f"(added {len(missing_stations)} estimated stations)")
 
     return enhanced_travelers
 
 def estimate_travelers_from_ticket_data_improved(tickets, trips_station_names):
     """Improved ticket data processing with better station matching"""
-    print("Processing ticket data with improved station matching...")
 
     def enhanced_standardize_station_name(name):
         """More robust station name standardization"""
@@ -1399,17 +1325,15 @@ def estimate_travelers_from_ticket_data_improved(tickets, trips_station_names):
             end_count = end_counts.get(station, 0)
             station_ticket_counts[station] = start_count + end_count
 
-    print(f"✓ Processed {len(tickets)} tickets, found {len(station_ticket_counts)} matched stations")
+    print(f" Processed {len(tickets)} tickets, found {len(station_ticket_counts)} matched stations")
 
     # Show some matching examples for verification
     sample_matches = list(station_ticket_counts.items())[:5]
-    print(f"Sample ticket station matches: {sample_matches}")
 
     return station_ticket_counts
 
 def estimate_travelers_from_subscription_data_improved(subscriptions, trips_station_names):
     """Improved subscription data processing"""
-    print("Processing subscription data with improved station matching...")
 
     def enhanced_standardize_station_name(name):
         """Same standardization as for tickets"""
@@ -1473,16 +1397,14 @@ def estimate_travelers_from_subscription_data_improved(subscriptions, trips_stat
             end_count = end_counts.get(station, 0)
             station_subscription_counts[station] = start_count + end_count
 
-    print(f"✓ Processed {len(subscriptions)} subscriptions, found {len(station_subscription_counts)} matched stations")
+    print(f" Processed {len(subscriptions)} subscriptions, found {len(station_subscription_counts)} matched stations")
 
     sample_matches = list(station_subscription_counts.items())[:5]
-    print(f"Sample subscription station matches: {sample_matches}")
 
     return station_subscription_counts
 
 def build_traveler_prediction_model_no_checks(known_travelers, ticket_counts, subscription_counts):
     """Build prediction model"""
-    print("Building traveler prediction model")
 
     # Create training dataset
     training_data = []
@@ -1501,7 +1423,7 @@ def build_traveler_prediction_model_no_checks(known_travelers, ticket_counts, su
             })
 
     if len(training_data) < 10:
-        print("⚠ Not enough training data for model")
+        print(" Not enough training data for model")
         return None, None, {}
 
     # Convert to DataFrame
@@ -1530,7 +1452,7 @@ def build_traveler_prediction_model_no_checks(known_travelers, ticket_counts, su
         'intercept': model.intercept_
     }
 
-    print(f"✓ Model trained (R²={r2:.3f}, MAE={mae:,.0f} travelers)")
+    print(f" Model trained (R²={r2:.3f}, MAE={mae:,.0f} travelers)")
     print(f"  Coefficients: tickets={model.coef_[0]:.6f}, subscriptions={model.coef_[1]:.6f}")
 
     return model, df, model_stats
@@ -1564,38 +1486,9 @@ def predict_missing_travelers_no_checks(model, missing_stations, ticket_counts, 
             'subscription_count': subscription_count
         }
 
-    print(f"✓ Predicted travelers for {len(predictions)} missing stations")
+    print(f" Predicted travelers for {len(predictions)} missing stations")
     return predictions
 
-def show_extreme_predictions(predictions):
-    """Show the most extreme predictions to see how unrealistic they are"""
-    print(f"\n🔍 EXTREME PREDICTIONS ANALYSIS:")
-
-    # Sort by predicted travelers
-    sorted_predictions = sorted(predictions.items(),
-                                key=lambda x: x[1]['predicted_travelers'],
-                                reverse=True)
-
-    print("Top 10 highest predictions:")
-    for station, pred in sorted_predictions[:10]:
-        print(f"  {station}: {pred['predicted_travelers']:,.0f} travelers "
-              f"(tickets: {pred['ticket_count']}, subs: {pred['subscription_count']})")
-
-    print("\nTop 10 lowest predictions:")
-    for station, pred in sorted_predictions[-10:]:
-        print(f"  {station}: {pred['predicted_travelers']:,.0f} travelers "
-              f"(tickets: {pred['ticket_count']}, subs: {pred['subscription_count']})")
-
-    # Calculate statistics
-    all_predictions = [p['predicted_travelers'] for p in predictions.values()]
-    if all_predictions:
-        avg_pred = sum(all_predictions) / len(all_predictions)
-        max_pred = max(all_predictions)
-        min_pred = min(all_predictions)
-        print(f"\nPrediction Statistics:")
-        print(f"  Average: {avg_pred:,.0f} travelers")
-        print(f"  Range: {min_pred:,.0f} to {max_pred:,.0f} travelers")
-        print(f"  Ratio (max/min): {max_pred/min_pred if min_pred > 0 else 'inf':.1f}")
 
 def apply_simple_fallback(original_travelers, missing_stations, ticket_counts, subscription_counts):
     """Simple fallback without complex logic"""
@@ -1620,13 +1513,220 @@ def apply_simple_fallback(original_travelers, missing_stations, ticket_counts, s
         enhanced_travelers = pd.concat([enhanced_travelers, pd.DataFrame([new_row])], ignore_index=True)
 
     return enhanced_travelers
+def filter_out_international_trains(trips):
+    """Filter out ONLY truly international trains, not domestic IC trains"""
+
+    # Define patterns for TRULY international trains (not Belgian IC trains)
+    international_patterns = [
+        'INT', 'TGV', 'ICE', 'EURST', 'THA', 'ICN', 'RJ', 'AVE', 'LYRIA'
+    ]
+
+    # Create a mask to identify international trains
+    is_international = trips['Relation'].str.contains('|'.join(international_patterns), na=False)
+
+    # DON'T filter by train number patterns - this was removing Belgian IC trains
+    # Only use the relation patterns
+
+    international_mask = is_international
+
+    # Count before and after
+    original_count = len(trips)
+    domestic_trips = trips[~international_mask].copy()
+    filtered_count = len(domestic_trips)
+
+    print(f" Filtered out {original_count - filtered_count:,} international train records")
+    print(f" Remaining trains: {filtered_count:,} ({filtered_count/original_count*100:.1f}% of original)")
+
+    # Show what was filtered
+    if international_mask.any():
+        international_routes = trips[international_mask]['Relation'].value_counts().head(10)
+        print(f"\nInternational routes filtered out:")
+        for route, count in international_routes.items():
+            print(f"  {route}: {count:,} trips")
+
+    return domestic_trips
+
+def calculate_composite_bottleneck_score(final_metrics):
+    """STEP 5: Z-score normalization with progressive Z-score capping"""
+    print("\n=== STEP 5: COMPOSITE BOTTLENECK SCORING ===")
+
+    # PROGRESSIVE Z-SCORE CAPPING - Different caps for different metrics
+    Z_SCORE_CAPS = {
+        'total_delay_minutes': 7.0,      # High cap for delay (allows major hubs to stand out)
+        'pct_delays_above_5min': 5.0,    # Medium cap for percentages
+        'degree_centrality': 6.0,        # High cap for network importance
+        'total_trains': 6.0,             # High cap for traffic volume
+        'delay_times_1000_travelers': 7.0 # High cap for societal impact
+    }
+
+    print("Z-score capping configuration:")
+    for metric, cap in Z_SCORE_CAPS.items():
+        print(f"  {metric}: {cap} standard deviations")
+
+    # Select metrics for the composite score
+    metrics_to_include = BOTTLENECK_METRICS
+
+    print("Selected metrics for composite score:")
+    available_metrics = []
+    for metric in metrics_to_include:
+        if metric in final_metrics.columns:
+            print(f"   {metric}")
+            available_metrics.append(metric)
+        else:
+            print(f"  ✗ {metric} (missing)")
+
+    if not available_metrics:
+        print(" No metrics available for scoring!")
+        return final_metrics
+
+    # Calculate Z-scores for each metric WITH PROGRESSIVE CAPPING
+    zscore_data = {}
+    total_capped = 0
+
+    for metric in available_metrics:
+        # Handle infinite values and missing data
+        clean_data = final_metrics[metric].replace([np.inf, -np.inf], np.nan).fillna(0)
+
+        # Calculate Z-scores (standardize to mean=0, std=1)
+        zscores = stats.zscore(clean_data, nan_policy='omit')
+
+        # Fill any remaining NaN values with 0 (neutral score)
+        zscores = np.nan_to_num(zscores, nan=0.0)
+
+        # Get the appropriate cap for this metric
+        cap = Z_SCORE_CAPS.get(metric, 5.0)  # Default to 5.0 if not specified
+
+        # CAP THE Z-SCORES
+        extreme_pos = np.sum(zscores > cap)
+        extreme_neg = np.sum(zscores < -cap)
+
+        if extreme_pos > 0 or extreme_neg > 0:
+            total_capped += (extreme_pos + extreme_neg)
+
+        zscores_capped = np.clip(zscores, -cap, cap)
+
+        zscore_data[f'z_{metric}'] = zscores_capped
+
+    if total_capped > 0:
+        print(f" Total extreme Z-scores capped: {total_capped}")
+
+    # Create DataFrame of Z-scores
+    zscore_df = pd.DataFrame(zscore_data)
+
+    # Calculate composite bottleneck score (sum of Z-scores)
+    final_metrics['bottleneck_score'] = zscore_df.sum(axis=1)
+
+    # Rank stations by bottleneck score (lower rank = more critical)
+    final_metrics['bottleneck_rank'] = final_metrics['bottleneck_score'].rank(ascending=False, method='min')
+
+    print(f" Calculated composite bottleneck scores for {len(final_metrics)} stations")
+    print(f" Applied progressive Z-score capping to balance metric influence")
+
+    return final_metrics
+
+
+def create_final_bottleneck_ranking(final_bottleneck_metrics, propagation_adjusted_metrics, original_metrics):
+    """Create comprehensive final bottleneck ranking with all metrics and rank changes"""
+    print("\n=== CREATING FINAL BOTTLENECK RANKING CSV ===")
+
+    # Load the intermediate files we saved
+    try:
+        step5_metrics = pd.read_csv('bottleneck_metrics_after_step5.csv')
+        step6_metrics = pd.read_csv('bottleneck_metrics_after_step6.csv')
+        step7_metrics = final_bottleneck_metrics.copy()  # This is after all filters
+
+        print(" Loaded metrics from all filtering steps")
+    except FileNotFoundError as e:
+        print(f" Error loading intermediate files: {e}")
+        return None
+
+    # Calculate rank changes
+    print("Calculating rank changes...")
+
+    # Get ranks from each step
+    step5_ranks = step5_metrics.set_index('Stopping place')['bottleneck_rank']
+    step6_ranks = step6_metrics.set_index('Stopping place')['bottleneck_rank']
+    step7_ranks = step7_metrics.set_index('Stopping place')['bottleneck_rank']
+
+    # Calculate rank changes (positive = improved, negative = worsened)
+    propagation_rank_change = step6_ranks - step5_ranks  # After propagation filter
+    incident_rank_change = step7_ranks - step6_ranks     # After incident filter
+
+    # Create the final comprehensive dataset
+    final_ranking = step7_metrics.copy()
+
+    # Add rank change columns
+    final_ranking['propagation_rank_change'] = final_ranking['Stopping place'].map(propagation_rank_change)
+    final_ranking['incident_rank_change'] = final_ranking['Stopping place'].map(incident_rank_change)
+
+    # Fill NaN values in rank changes with 0 (no change)
+    final_ranking['propagation_rank_change'] = final_ranking['propagation_rank_change'].fillna(0)
+    final_ranking['incident_rank_change'] = final_ranking['incident_rank_change'].fillna(0)
+
+    # Select and order the columns for the final output
+    bottleneck_components = [
+        'total_delay_minutes', 'pct_delays_above_5min', 'degree_centrality',
+        'total_trains', 'delay_times_1000_travelers', 'avg_weekday_travelers'
+    ]
+
+    # Ensure all component columns exist
+    available_components = [col for col in bottleneck_components if col in final_ranking.columns]
+
+    # Define the final column order
+    final_columns = [
+                        'Stopping place',
+                        'bottleneck_score',
+                        'bottleneck_rank'
+                    ] + available_components + [
+                        'propagation_rank_change',
+                        'incident_rank_change'
+                    ]
+
+    # Select only the columns that exist
+    final_columns = [col for col in final_columns if col in final_ranking.columns]
+
+    final_ranking = final_ranking[final_columns]
+
+    # Sort by bottleneck rank (most critical first)
+    final_ranking = final_ranking.sort_values('bottleneck_rank')
+
+    # Save the final comprehensive ranking
+    final_ranking.to_csv('final_bottleneck_ranking.csv', index=False)
+
+    print(f" Created final_bottleneck_ranking.csv with {len(final_ranking)} stations")
+    print(f" Columns included: {', '.join(final_columns)}")
+
+    # Display summary of rank changes
+    print(f"\n📊 RANK CHANGE SUMMARY:")
+    print(f"  Stations that improved after propagation filter: {len(final_ranking[final_ranking['propagation_rank_change'] > 0])}")
+    print(f"  Stations that worsened after propagation filter: {len(final_ranking[final_ranking['propagation_rank_change'] < 0])}")
+    print(f"  Stations that improved after incident filter: {len(final_ranking[final_ranking['incident_rank_change'] > 0])}")
+    print(f"  Stations that worsened after incident filter: {len(final_ranking[final_ranking['incident_rank_change'] < 0])}")
+
+    # Show top stations with largest improvements/worsening
+    if len(final_ranking) > 0:
+        print(f"\n🏆 TOP 5 STATIONS WITH LARGEST IMPROVEMENTS (After Propagation Filter):")
+        top_improved_propagation = final_ranking.nlargest(5, 'propagation_rank_change')[['Stopping place', 'propagation_rank_change', 'bottleneck_rank']]
+        for _, station in top_improved_propagation.iterrows():
+            print(f"  {station['Stopping place']}: +{station['propagation_rank_change']:.0f} rank improvement")
+
+        print(f"\n📉 TOP 5 STATIONS WITH LARGEST WORSENING (After Propagation Filter):")
+        top_worsened_propagation = final_ranking.nsmallest(5, 'propagation_rank_change')[['Stopping place', 'propagation_rank_change', 'bottleneck_rank']]
+        for _, station in top_worsened_propagation.iterrows():
+            print(f"  {station['Stopping place']}: {station['propagation_rank_change']:.0f} rank change")
+
+    return final_ranking
 def main():
-    """Main analysis function with all steps including route-based incidental delay filter"""
+    """Main analysis function with all steps including route-based incidental delay filter - UPDATED"""
     print("STARTING COMPLETE BOTTLENECK ANALYSIS PIPELINE")
     print("=" * 60)
 
     # Step 1: Load and preprocess data
     trips, stations, travelers, incidents = load_all_data()
+
+    # NEW: Filter out international trains
+    trips = filter_out_international_trains(trips)
+
     # Filter out trains that don't actually stop
     trips = filter_actual_stops(trips)
     # Analyze stop patterns (optional, for insights)
@@ -1638,7 +1738,7 @@ def main():
     delay_metrics = calculate_basic_delay_metrics(trips)
 
     # Load additional data for traveler estimation
-    print("Loading ticket and subscription data...")
+    print("Loading ticket and subscription data")
     tickets = pd.read_csv("data/tickets.csv")
     subscriptions = pd.read_csv("data/subscriptions.csv")
 
@@ -1658,9 +1758,13 @@ def main():
     # Step 5: Composite bottleneck scoring
     final_metrics = calculate_composite_bottleneck_score(final_metrics)
 
+    # NEW: Save bottleneck metrics after Step 5 with score and rank
+    bottleneck_metrics_completed_steps = final_metrics.copy()
+    bottleneck_metrics_completed_steps.to_csv('bottleneck_metrics_after_step5.csv', index=False)
+    print(" Saved bottleneck metrics after Step 5 to 'bottleneck_metrics_after_step5.csv'")
+
     # Display initial results
     top_bottlenecks = display_bottleneck_ranking(final_metrics)
-    analyze_bottleneck_patterns(top_bottlenecks)
 
     print("\n" + "=" * 60)
     print("STEPS 1-5 COMPLETED - PROCEEDING TO PROPAGATION FILTERING")
@@ -1673,6 +1777,10 @@ def main():
     print("\nRecalculating bottleneck scores with propagation filtering...")
     propagation_adjusted_metrics = calculate_composite_bottleneck_score(adjusted_delay_metrics)
 
+    # NEW: Save bottleneck metrics after Step 6 with score and rank
+    propagation_adjusted_metrics.to_csv('bottleneck_metrics_after_step6.csv', index=False)
+    print(" Saved bottleneck metrics after Step 6 to 'bottleneck_metrics_after_step6.csv'")
+
     # Display propagation results
     display_propagation_results(final_metrics, propagation_adjusted_metrics, route_performance, systemic_routes)
 
@@ -1680,8 +1788,6 @@ def main():
     print("STEP 6 COMPLETED - PROCEEDING TO INCIDENTAL DELAY FILTER")
     print("=" * 60)
 
-
-    # STEP 7: Realistic Route-based Incidental Delay Filter
     # STEP 7: Historical Incident Proneness Analysis
     print("\n=== HISTORICAL INCIDENT PATTERN ANALYSIS ===")
     print("Using historical incidents as training data to identify routes prone to external delays...")
@@ -1700,6 +1806,13 @@ def main():
     print("\nRecalculating bottleneck scores with incidental delays removed...")
     final_bottleneck_metrics = calculate_composite_bottleneck_score(incident_adjusted_metrics)
 
+    # NEW: Create the comprehensive final ranking
+    final_comprehensive_ranking = create_final_bottleneck_ranking(
+        final_bottleneck_metrics,
+        propagation_adjusted_metrics,
+        final_metrics
+    )
+
     # Display final results
     print("\n" + "=" * 60)
     print("FINAL BOTTLENECK RANKING AFTER ALL FILTERING")
@@ -1714,12 +1827,17 @@ def main():
 
     print("\n" + "=" * 60)
     print("ANALYSIS COMPLETED SUCCESSFULLY!")
-    print("✓ Steps 1-5: Basic bottleneck identification")
-    print("✓ Step 6: Propagation filter (route-wide delays)")
-    print("✓ Step 7: Route-based incidental delay filter (external factors)")
-    print("✓ Route vulnerability analysis completed")
-    print(f"✓ Final results saved to 'final_bottleneck_metrics.csv'")
-    print(f"✓ Route analysis saved to 'route_vulnerability_analysis.csv'")
+    print(" Steps 1-5: Basic bottleneck identification")
+    print(" Step 6: Propagation filter (route-wide delays)")
+    print(" Step 7: Route-based incidental delay filter (external factors)")
+    print(" International trains filtered out")
+    print(" Route vulnerability analysis completed")
+    print(f" Final comprehensive ranking saved to 'final_bottleneck_ranking.csv'")
+    print(f" Step-by-step bottleneck metrics saved:")
+    print(f"    - bottleneck_metrics_after_step5.csv")
+    print(f"    - bottleneck_metrics_after_step6.csv")
+    print(f"    - final_bottleneck_metrics.csv (after Step 7)")
+    print(f" Route analysis saved to 'route_vulnerability_analysis.csv'")
 
     return final_bottleneck_metrics
 
