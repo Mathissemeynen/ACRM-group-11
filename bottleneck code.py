@@ -4,13 +4,15 @@ import os
 import glob
 from collections import Counter
 from scipy import stats
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, r2_score
 
 # =============================================================================
 # CONFIGURATION CONSTANTS - EASY TWEAKING
 # =============================================================================
 
 # Step 2: Basic Delay Metrics
-PEAK_HOURS_MORNING = [7, 8, 9]      # 7-9 AM
+PEAK_HOURS_MORNING = [6, 7, 8, 9]      # 6-9 AM
 PEAK_HOURS_EVENING = [16, 17, 18]   # 4-6 PM
 
 # Step 4: Network Analysis
@@ -556,8 +558,6 @@ def proper_propagation_filter(trips, delay_metrics):
         (route_delay_patterns['total_observations'] >= 20) # Enough data points
         ]
 
-    print(f"Found {len(systemic_routes)} systemic routes (low variance + high delays)")
-
     # FILTER: For stations on systemic routes, only count delays where Z-score > threshold
     significant_delay_threshold = SIGNIFICANT_DELAY_Z_THRESHOLD
 
@@ -956,8 +956,6 @@ def analyze_route_incident_prone_patterns(trips, incidents, stations):
         max_incidents_per_trip = reliable_routes['historical_incidents_per_trip'].max()
         routes_with_incidents = reliable_routes[reliable_routes['historical_incident_count'] > 0]
 
-        print(f"✓ Average weekly incidents per trip: {avg_incidents_per_trip:.6f}")
-        print(f"✓ Maximum weekly incidents per trip: {max_incidents_per_trip:.6f}")
         print(f"✓ Routes with historical incidents: {len(routes_with_incidents)}")
         print(f"✓ Average estimated incidental delays: {reliable_routes['estimated_incidental_pct'].mean():.1f}%")
 
@@ -977,7 +975,6 @@ def print_incident_proneness_analysis(reliable_routes):
     for _, route in top_incident_prone.iterrows():
         if route['historical_incidents_per_trip'] > 0:
             print(f"{route['Relation']} ({route['Direction']}):")
-            print(f"  Weekly incidents per trip: {route['historical_incidents_per_trip']:.6f}")
             print(f"  {route['weekly_avg_incidents']:.2f} avg weekly incidents ({route['historical_incident_count']} total historical)")
             print(f"  {route['total_recent_trips']} recent weekly trips")
             print(f"  Estimated {route['estimated_incidental_pct']:.1f}% of delays are incidental")
@@ -1255,12 +1252,6 @@ def analyze_stop_patterns(trips):
     if skipped_stops_count > 0:
         print(f"\n🔍 OPERATIONAL IMPACT ANALYSIS:")
 
-        # Calculate delay impact of skipped stops
-        skipped_trips = trips[planned_stops & actual_non_stops]
-        if len(skipped_trips) > 0:
-            avg_delay_skipped = skipped_trips['departure_delay'].mean() if 'departure_delay' in skipped_trips.columns else 0
-            print(f"  - Average delay on routes with skipped stops: {avg_delay_skipped:.1f} minutes")
-
         # Most problematic routes for skipping
         route_skipping = trips[planned_stops & actual_non_stops].groupby(['Relation', 'Relation direction']).size().sort_values(ascending=False).head(10)
         if len(route_skipping) > 0:
@@ -1273,7 +1264,362 @@ def analyze_stop_patterns(trips):
         'extra_stops': extra_stops_count,
         'skipped_stops': skipped_stops_count
     }
+def create_enhanced_travelers_dataset(original_travelers, trips, tickets, subscriptions):
+    """Create complete travelers dataset using predictive modeling for missing stations"""
+    print("Creating enhanced travelers dataset")
 
+    # Get all stations from trips data
+    all_stations_from_trips = set(trips['Stopping place'].unique())
+
+    # Get stations with known traveler data
+    known_stations = set(original_travelers['Station'])
+    known_travelers_dict = dict(zip(original_travelers['Station'],
+                                    original_travelers['Avg number of travelers in the week']))
+
+    # Identify missing stations
+    missing_stations = all_stations_from_trips - known_stations
+    print(f"Stations with known traveler data: {len(known_stations)}")
+    print(f"Stations needing estimation: {len(missing_stations)}")
+
+    if len(missing_stations) == 0:
+        print("✓ No missing stations - using original traveler data")
+        return original_travelers
+
+    # Process ticket and subscription data
+    ticket_counts = estimate_travelers_from_ticket_data_improved(tickets, all_stations_from_trips)
+    subscription_counts = estimate_travelers_from_subscription_data_improved(subscriptions, all_stations_from_trips)
+
+    # Build prediction model
+    model, training_data, model_stats = build_traveler_prediction_model_no_checks(
+        known_travelers_dict, ticket_counts, subscription_counts
+    )
+
+    # Create enhanced dataset starting with original data
+    enhanced_travelers = original_travelers.copy()
+
+    if model is None:
+        print("⚠ Could not build model - using fallback method")
+        enhanced_travelers = apply_simple_fallback(enhanced_travelers, missing_stations, ticket_counts, subscription_counts)
+    else:
+        # Predict missing stations
+        predictions = predict_missing_travelers_no_checks(
+            model, missing_stations, ticket_counts, subscription_counts
+        )
+
+        # Add predictions for missing stations only
+        for station, prediction in predictions.items():
+            new_row = {
+                'Station': station,
+                'Avg number of travelers in the week': int(prediction['predicted_travelers']),
+                'Avg number of travelers on Saturday': int(prediction['predicted_travelers'] * 0.3),
+                'Avg number of travelers on Sunday': int(prediction['predicted_travelers'] * 0.25)
+            }
+            enhanced_travelers = pd.concat([enhanced_travelers, pd.DataFrame([new_row])], ignore_index=True)
+
+        # Show some extreme predictions to see how unrealistic they are
+        show_extreme_predictions(predictions)
+
+    print(f"✓ Enhanced travelers data: {len(enhanced_travelers)} stations "
+          f"(added {len(missing_stations)} estimated stations)")
+
+    return enhanced_travelers
+
+def estimate_travelers_from_ticket_data_improved(tickets, trips_station_names):
+    """Improved ticket data processing with better station matching"""
+    print("Processing ticket data with improved station matching...")
+
+    def enhanced_standardize_station_name(name):
+        """More robust station name standardization"""
+        if pd.isna(name) or name == '':
+            return None
+
+        # Convert to uppercase and strip
+        name_upper = str(name).strip().upper()
+
+        # Handle combined Dutch/French names (take Dutch part)
+        if '/' in name_upper:
+            name_upper = name_upper.split('/')[0].strip()
+
+        # Remove common descriptors
+        for descriptor in ['STATION', 'GARE', ' - ', ' SNCB']:
+            name_upper = name_upper.replace(descriptor, '').strip()
+
+        # Common variations mapping (expanded)
+        name_variations = {
+            'BRUXELLES-': 'BRUSSEL-',
+            'BRUXELLES': 'BRUSSEL',
+            'ANVERS': 'ANTWERPEN',
+            'GAND': 'GENT',
+            'LIEGE': 'LIÈGE',
+            'LUIK': 'LIÈGE',
+            'MONS': 'BERGEN',
+            'TOURNAI': 'DOORNIK',
+            'NAMUR': 'NAMEN',
+            'CHARLEROI': 'CHARLEROI',
+            'LOUVAIN': 'LEUVEN',
+            'MALINES': 'MECHELEN',
+            'HAELEN': 'HALLE',
+            'TERVUEREN': 'TERVUREN',
+            'BRUSSELS AIRPORT - ZAVENTEM': 'ZAVENTEM',
+            'BRUSSELS-AIRPORT-ZAVENTEM': 'ZAVENTEM',
+            'BRUSSEL-LUXEMBURG': 'BRUSSEL-LUXEMBURG',
+            'BRUSSEL-LUXEMBOURG': 'BRUSSEL-LUXEMBURG'
+        }
+
+        # Apply variations
+        for old, new in name_variations.items():
+            name_upper = name_upper.replace(old, new)
+
+        # Final cleanup
+        name_upper = name_upper.strip('- ').strip()
+
+        return name_upper
+
+    # Apply standardization
+    tickets['start_station_std'] = tickets['start_station'].apply(enhanced_standardize_station_name)
+    tickets['end_station_std'] = tickets['end_station'].apply(enhanced_standardize_station_name)
+
+    # Count tickets per station (both as origin and destination)
+    station_ticket_counts = {}
+
+    # Count start stations
+    valid_starts = tickets[tickets['start_station_std'].notna()]
+    start_counts = valid_starts['start_station_std'].value_counts()
+
+    # Count end stations
+    valid_ends = tickets[tickets['end_station_std'].notna()]
+    end_counts = valid_ends['end_station_std'].value_counts()
+
+    # Combine counts, only including stations that exist in trips data
+    all_stations = set(start_counts.index) | set(end_counts.index)
+
+    for station in all_stations:
+        if station in trips_station_names:
+            start_count = start_counts.get(station, 0)
+            end_count = end_counts.get(station, 0)
+            station_ticket_counts[station] = start_count + end_count
+
+    print(f"✓ Processed {len(tickets)} tickets, found {len(station_ticket_counts)} matched stations")
+
+    # Show some matching examples for verification
+    sample_matches = list(station_ticket_counts.items())[:5]
+    print(f"Sample ticket station matches: {sample_matches}")
+
+    return station_ticket_counts
+
+def estimate_travelers_from_subscription_data_improved(subscriptions, trips_station_names):
+    """Improved subscription data processing"""
+    print("Processing subscription data with improved station matching...")
+
+    def enhanced_standardize_station_name(name):
+        """Same standardization as for tickets"""
+        if pd.isna(name) or name == '':
+            return None
+
+        name_upper = str(name).strip().upper()
+
+        if '/' in name_upper:
+            name_upper = name_upper.split('/')[0].strip()
+
+        for descriptor in ['STATION', 'GARE', ' - ', ' SNCB']:
+            name_upper = name_upper.replace(descriptor, '').strip()
+
+        name_variations = {
+            'BRUXELLES-': 'BRUSSEL-',
+            'BRUXELLES': 'BRUSSEL',
+            'ANVERS': 'ANTWERPEN',
+            'GAND': 'GENT',
+            'LIEGE': 'LIÈGE',
+            'LUIK': 'LIÈGE',
+            'MONS': 'BERGEN',
+            'TOURNAI': 'DOORNIK',
+            'NAMUR': 'NAMEN',
+            'CHARLEROI': 'CHARLEROI',
+            'LOUVAIN': 'LEUVEN',
+            'MALINES': 'MECHELEN',
+            'HAELEN': 'HALLE',
+            'TERVUEREN': 'TERVUREN',
+            'BRUSSELS AIRPORT - ZAVENTEM': 'ZAVENTEM',
+            'BRUSSELS-AIRPORT-ZAVENTEM': 'ZAVENTEM'
+        }
+
+        for old, new in name_variations.items():
+            name_upper = name_upper.replace(old, new)
+
+        name_upper = name_upper.strip('- ').strip()
+        return name_upper
+
+    # Apply standardization
+    subscriptions['start_station_std'] = subscriptions['start_station'].apply(enhanced_standardize_station_name)
+    subscriptions['end_station_std'] = subscriptions['end_station'].apply(enhanced_standardize_station_name)
+
+    # Count subscriptions per station
+    station_subscription_counts = {}
+
+    # Count start stations
+    valid_starts = subscriptions[subscriptions['start_station_std'].notna()]
+    start_counts = valid_starts['start_station_std'].value_counts()
+
+    # Count end stations
+    valid_ends = subscriptions[subscriptions['end_station_std'].notna()]
+    end_counts = valid_ends['end_station_std'].value_counts()
+
+    # Combine counts
+    all_stations = set(start_counts.index) | set(end_counts.index)
+
+    for station in all_stations:
+        if station in trips_station_names:
+            start_count = start_counts.get(station, 0)
+            end_count = end_counts.get(station, 0)
+            station_subscription_counts[station] = start_count + end_count
+
+    print(f"✓ Processed {len(subscriptions)} subscriptions, found {len(station_subscription_counts)} matched stations")
+
+    sample_matches = list(station_subscription_counts.items())[:5]
+    print(f"Sample subscription station matches: {sample_matches}")
+
+    return station_subscription_counts
+
+def build_traveler_prediction_model_no_checks(known_travelers, ticket_counts, subscription_counts):
+    """Build prediction model"""
+    print("Building traveler prediction model")
+
+    # Create training dataset
+    training_data = []
+
+    for station, actual_travelers in known_travelers.items():
+        ticket_count = ticket_counts.get(station, 0)
+        subscription_count = subscription_counts.get(station, 0)
+
+        # Only include stations with some ticket/subscription data
+        if ticket_count > 0 or subscription_count > 0:
+            training_data.append({
+                'station': station,
+                'ticket_count': ticket_count,
+                'subscription_count': subscription_count,
+                'actual_travelers': actual_travelers
+            })
+
+    if len(training_data) < 10:
+        print("⚠ Not enough training data for model")
+        return None, None, {}
+
+    # Convert to DataFrame
+    df = pd.DataFrame(training_data)
+
+    # Prepare features and target
+    X = df[['ticket_count', 'subscription_count']]
+    y = df['actual_travelers']
+
+    from sklearn.linear_model import LinearRegression
+    from sklearn.metrics import mean_absolute_error, r2_score
+
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # Evaluate model
+    y_pred = model.predict(X)
+    mae = mean_absolute_error(y, y_pred)
+    r2 = r2_score(y, y_pred)
+
+    model_stats = {
+        'r2': r2,
+        'mae': mae,
+        'training_size': len(training_data),
+        'coefficients': model.coef_,
+        'intercept': model.intercept_
+    }
+
+    print(f"✓ Model trained (R²={r2:.3f}, MAE={mae:,.0f} travelers)")
+    print(f"  Coefficients: tickets={model.coef_[0]:.6f}, subscriptions={model.coef_[1]:.6f}")
+
+    return model, df, model_stats
+
+def predict_missing_travelers_no_checks(model, missing_stations, ticket_counts, subscription_counts):
+    """Predict without confidence checks"""
+    print("Predicting traveler counts (no confidence checks)...")
+
+    predictions = {}
+
+    for station in missing_stations:
+        ticket_count = ticket_counts.get(station, 0)
+        subscription_count = subscription_counts.get(station, 0)
+
+        # Create feature array
+        X_pred = pd.DataFrame({
+            'ticket_count': [ticket_count],
+            'subscription_count': [subscription_count]
+        })
+
+        if ticket_count > 0 or subscription_count > 0:
+            predicted_travelers = model.predict(X_pred)[0]
+            # Only basic bounds
+            predicted_travelers = max(10, min(predicted_travelers, 500000))
+        else:
+            predicted_travelers = 1000  # Basic fallback
+
+        predictions[station] = {
+            'predicted_travelers': predicted_travelers,
+            'ticket_count': ticket_count,
+            'subscription_count': subscription_count
+        }
+
+    print(f"✓ Predicted travelers for {len(predictions)} missing stations")
+    return predictions
+
+def show_extreme_predictions(predictions):
+    """Show the most extreme predictions to see how unrealistic they are"""
+    print(f"\n🔍 EXTREME PREDICTIONS ANALYSIS:")
+
+    # Sort by predicted travelers
+    sorted_predictions = sorted(predictions.items(),
+                                key=lambda x: x[1]['predicted_travelers'],
+                                reverse=True)
+
+    print("Top 10 highest predictions:")
+    for station, pred in sorted_predictions[:10]:
+        print(f"  {station}: {pred['predicted_travelers']:,.0f} travelers "
+              f"(tickets: {pred['ticket_count']}, subs: {pred['subscription_count']})")
+
+    print("\nTop 10 lowest predictions:")
+    for station, pred in sorted_predictions[-10:]:
+        print(f"  {station}: {pred['predicted_travelers']:,.0f} travelers "
+              f"(tickets: {pred['ticket_count']}, subs: {pred['subscription_count']})")
+
+    # Calculate statistics
+    all_predictions = [p['predicted_travelers'] for p in predictions.values()]
+    if all_predictions:
+        avg_pred = sum(all_predictions) / len(all_predictions)
+        max_pred = max(all_predictions)
+        min_pred = min(all_predictions)
+        print(f"\nPrediction Statistics:")
+        print(f"  Average: {avg_pred:,.0f} travelers")
+        print(f"  Range: {min_pred:,.0f} to {max_pred:,.0f} travelers")
+        print(f"  Ratio (max/min): {max_pred/min_pred if min_pred > 0 else 'inf':.1f}")
+
+def apply_simple_fallback(original_travelers, missing_stations, ticket_counts, subscription_counts):
+    """Simple fallback without complex logic"""
+    enhanced_travelers = original_travelers.copy()
+
+    for station in missing_stations:
+        ticket_count = ticket_counts.get(station, 0)
+        subscription_count = subscription_counts.get(station, 0)
+
+        # Very simple heuristic
+        if ticket_count + subscription_count > 0:
+            estimated = max(100, (ticket_count * 20 + subscription_count * 100))
+        else:
+            estimated = 1000
+
+        new_row = {
+            'Station': station,
+            'Avg number of travelers in the week': int(estimated),
+            'Avg number of travelers on Saturday': int(estimated * 0.3),
+            'Avg number of travelers on Sunday': int(estimated * 0.25)
+        }
+        enhanced_travelers = pd.concat([enhanced_travelers, pd.DataFrame([new_row])], ignore_index=True)
+
+    return enhanced_travelers
 def main():
     """Main analysis function with all steps including route-based incidental delay filter"""
     print("STARTING COMPLETE BOTTLENECK ANALYSIS PIPELINE")
@@ -1291,8 +1637,13 @@ def main():
     # Step 2: Basic delay metrics
     delay_metrics = calculate_basic_delay_metrics(trips)
 
-    # ENHANCED: Create complete travelers dataset
-    complete_travelers = create_complete_travelers_dataset(travelers, stations, trips)
+    # Load additional data for traveler estimation
+    print("Loading ticket and subscription data...")
+    tickets = pd.read_csv("data/tickets.csv")
+    subscriptions = pd.read_csv("data/subscriptions.csv")
+
+    # ENHANCED: Create complete travelers dataset using predictive modeling
+    complete_travelers = create_enhanced_travelers_dataset(travelers, trips, tickets, subscriptions)
 
     # Step 3: Normalize with complete travelers data
     normalized_metrics = reliable_normalize_with_travelers(delay_metrics, complete_travelers)
